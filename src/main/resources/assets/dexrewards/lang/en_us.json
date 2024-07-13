@@ -8,5 +8,7 @@
   "item.dexrewards.dexreward7": "Pokedex Certificate 7",
   "item.dexrewards.dexreward8": "Pokedex Certificate 8",
   "item.dexrewards.dexreward9": "Pokedex Certificate 9",
-  "item.dexrewards.dexreward10": "Pokedex Certificate 10"
+  "item.dexrewards.dexreward10": "Pokedex Certificate 10",
+
+  "itemgroup.dexrewards": "Pokedex Reward Certificates"
 }
