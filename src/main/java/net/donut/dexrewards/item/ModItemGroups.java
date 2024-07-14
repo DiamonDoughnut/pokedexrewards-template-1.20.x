@@ -10,21 +10,55 @@ import net.minecraft.registry.Registry;
 import net.minecraft.text.Text;
 import net.minecraft.util.Identifier;
 
-public class ModItemGroups {
-    public static final ItemGroup DEX_REWARDS = Registry.register(Registries.ITEM_GROUP, new Identifier(DexRewards.MOD_ID, "dexrewards"), FabricItemGroup.builder().displayName(Text.translatable("itemgroup.dexrewards")).icon(() -> new ItemStack(ModItems.DEXREWARD10)).entries((displayContext, entries) -> {
-        entries.add(ModItems.DEXREWARD1);
-        entries.add(ModItems.DEXREWARD2);
-        entries.add(ModItems.DEXREWARD3);
-        entries.add(ModItems.DEXREWARD4);
-        entries.add(ModItems.DEXREWARD5);
-        entries.add(ModItems.DEXREWARD6);
-        entries.add(ModItems.DEXREWARD7);
-        entries.add(ModItems.DEXREWARD8);
-        entries.add(ModItems.DEXREWARD9);
-        entries.add(ModItems.DEXREWARD10);
+import static net.donut.dexrewards.item.ModItems.*;
 
+public class ModItemGroups {
+
+    //Creative Item tab for Dex Reward Items
+    public static final ItemGroup DEX_REWARDS = Registry.register(Registries.ITEM_GROUP, new Identifier(DexRewards.MOD_ID, "dexrewards"), FabricItemGroup.builder().displayName(Text.translatable("itemgroup.dexrewards")).icon(() -> new ItemStack(ModItems.DEXREWARD10)).entries((displayContext, entries) -> {
+        //dex completion items
+        entries.add(DEXREWARD1);
+        entries.add(DEXREWARD2);
+        entries.add(DEXREWARD3);
+        entries.add(DEXREWARD4);
+        entries.add(DEXREWARD5);
+        entries.add(DEXREWARD6);
+        entries.add(DEXREWARD7);
+        entries.add(DEXREWARD8);
+        entries.add(DEXREWARD9);
+        entries.add(DEXREWARD10);
+
+        //blocks to be commented out/changed later
         entries.add(ModBlocks.Dex_Block);
         entries.add(ModBlocks.Raw_Dex_Block);
+    }).build());
+
+    //Creative Item tab for Legend crystals
+    public static final ItemGroup LEGEND_CRYSTALS = Registry.register(Registries.ITEM_GROUP, new Identifier(DexRewards.MOD_ID,"legendcrysts"), FabricItemGroup.builder().displayName(Text.of("Legend Crystals")).icon(() -> new ItemStack(LEGENDCRYST)).entries((displayContext, entries) -> {
+        //legend crystals
+        entries.add(LEGENDSHARDSMALL);
+        entries.add(SUBLEGENDCRYST);
+        entries.add(LEGENDCRYST);
+        entries.add(MYTHCRYST);
+        //type crystals
+        entries.add(NORMALCRYST);
+        entries.add(GRASSCRYST);
+        entries.add(FIRECRYST);
+        entries.add(WATERCRYST);
+        entries.add(FAIRYCRYST);
+        entries.add(DARKCRYST);
+        entries.add(STEELCRYST);
+        entries.add(GHOSTCRYST);
+        entries.add(GROUNDCRYST);
+        entries.add(ELECTRICCRYST);
+        entries.add(FIGHTINGCRYST);
+        entries.add(FLYINGCRYST);
+        entries.add(ICECRYST);
+        entries.add(POISONCRYST);
+        entries.add(PSYCHICCRYST);
+        entries.add(ROCKCRYST);
+        entries.add(BUGCRYST);
+        entries.add(DRAGONCRYST);
     }).build());
 
     public static void registerItemGroups() {
