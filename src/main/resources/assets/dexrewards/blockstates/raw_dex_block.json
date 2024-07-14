@@ -1,0 +1,7 @@
+{
+  "variants": {
+    "": {
+      "model": "dexrewards:block/raw_dex_block"
+    }
+  }
+}

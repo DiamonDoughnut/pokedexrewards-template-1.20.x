@@ -10,5 +10,8 @@
   "item.dexrewards.dexreward9": "Pokedex Certificate 9",
   "item.dexrewards.dexreward10": "Pokedex Certificate 10",
 
+  "block.dexrewards.dex_block": "Pokedex Certificate Block",
+  "block.dexrewards.raw_dex_block": "Raw Pokedex Certificate Block",
+
   "itemgroup.dexrewards": "Pokedex Reward Certificates"
 }

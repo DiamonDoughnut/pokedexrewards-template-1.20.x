@@ -1,6 +1,7 @@
 package net.donut.dexrewards.item;
 
 import net.donut.dexrewards.DexRewards;
+import net.donut.dexrewards.block.ModBlocks;
 import net.fabricmc.fabric.api.itemgroup.v1.FabricItemGroup;
 import net.minecraft.item.ItemGroup;
 import net.minecraft.item.ItemStack;
@@ -21,6 +22,9 @@ public class ModItemGroups {
         entries.add(ModItems.DEXREWARD8);
         entries.add(ModItems.DEXREWARD9);
         entries.add(ModItems.DEXREWARD10);
+
+        entries.add(ModBlocks.Dex_Block);
+        entries.add(ModBlocks.Raw_Dex_Block);
     }).build());
 
     public static void registerItemGroups() {

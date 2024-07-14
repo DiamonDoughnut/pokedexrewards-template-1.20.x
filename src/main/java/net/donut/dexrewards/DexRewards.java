@@ -1,5 +1,6 @@
 package net.donut.dexrewards;
 
+import net.donut.dexrewards.block.ModBlocks;
 import net.donut.dexrewards.item.ModItemGroups;
 import net.donut.dexrewards.item.ModItems;
 import net.fabricmc.api.ModInitializer;
@@ -14,6 +15,8 @@ public class DexRewards implements ModInitializer {
 	@Override
 	public void onInitialize() {
 		ModItemGroups.registerItemGroups();
+
+		ModBlocks.registerModBlocks();
 		ModItems.RegisterModItems();
 	}
 }
