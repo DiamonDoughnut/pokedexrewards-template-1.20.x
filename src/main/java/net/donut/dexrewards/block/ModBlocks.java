@@ -5,15 +5,22 @@ import net.fabricmc.fabric.api.item.v1.FabricItemSettings;
 import net.fabricmc.fabric.api.object.builder.v1.block.FabricBlockSettings;
 import net.minecraft.block.Block;
 import net.minecraft.block.Blocks;
+import net.minecraft.block.ExperienceDroppingBlock;
 import net.minecraft.item.BlockItem;
 import net.minecraft.item.Item;
 import net.minecraft.registry.Registries;
 import net.minecraft.registry.Registry;
 import net.minecraft.util.Identifier;
+import net.minecraft.util.math.intprovider.UniformIntProvider;
 
 public class ModBlocks {
-    public static final Block Dex_Block = registerBlock("dex_block", new Block(FabricBlockSettings.copyOf(Blocks.AMETHYST_BLOCK)));
-    public static final Block Raw_Dex_Block = registerBlock("raw_dex_block", new Block(FabricBlockSettings.copyOf(Blocks.GOLD_ORE)));
+    public static final Block Dex_Block = registerBlock("dex_block", new Block(FabricBlockSettings.copyOf(Blocks.IRON_BLOCK)));
+    public static final Block Raw_Dex_Block = registerBlock("raw_dex_block", new Block(FabricBlockSettings.copyOf(Blocks.RAW_IRON_BLOCK)));
+
+    public static final Block Dex_Ore = registerBlock("dex_ore", new ExperienceDroppingBlock(FabricBlockSettings.copyOf(Blocks.STONE).strength(2f), UniformIntProvider.create(2,5)));
+    public static final Block Deepslate_Dex_Ore = registerBlock("deepslate_dex_ore", new ExperienceDroppingBlock(FabricBlockSettings.copyOf(Blocks.DEEPSLATE).strength(4f), UniformIntProvider.create(2,5)));
+    public static final Block Nether_Dex_Ore = registerBlock("nether_dex_ore", new ExperienceDroppingBlock(FabricBlockSettings.copyOf(Blocks.NETHERRACK).strength(1.5f), UniformIntProvider.create(2,5)));
+    public static final Block End_Dex_Ore = registerBlock("end_dex_ore", new ExperienceDroppingBlock(FabricBlockSettings.copyOf(Blocks.END_STONE).strength(4f), UniformIntProvider.create(2,5)));
 
     private static Block registerBlock(String name, Block block){
         registerBlockItem(name, block);

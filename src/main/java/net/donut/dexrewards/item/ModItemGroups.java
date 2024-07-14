@@ -31,6 +31,10 @@ public class ModItemGroups {
         //blocks to be commented out/changed later
         entries.add(ModBlocks.Dex_Block);
         entries.add(ModBlocks.Raw_Dex_Block);
+        entries.add(ModBlocks.Dex_Ore);
+        entries.add(ModBlocks.Deepslate_Dex_Ore);
+        entries.add(ModBlocks.Nether_Dex_Ore);
+        entries.add(ModBlocks.End_Dex_Ore);
     }).build());
 
     //Creative Item tab for Legend crystals

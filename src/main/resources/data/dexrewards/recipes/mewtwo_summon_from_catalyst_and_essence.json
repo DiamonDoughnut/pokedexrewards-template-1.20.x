@@ -1,0 +1,21 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    " # ",
+    "#*#",
+    " # "
+  ],
+  "key": {
+    "#": {
+      "item": "dexrewards:psychic_essence"
+    },
+    "*": {
+      "item": "dexrewards:legend_crystal"
+    }
+  },
+  "result": {
+    "item": "dexrewards:mewtwo_summon",
+    "count": 1
+  },
+  "group": "misc"
+}

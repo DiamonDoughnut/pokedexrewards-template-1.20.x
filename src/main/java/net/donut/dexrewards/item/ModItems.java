@@ -25,12 +25,13 @@ public class ModItems {
     public static final Item DEXREWARD10 = registerItem("dexreward10", new Item(new FabricItemSettings()));
 
     //Legendary shard crystals for use in all legend summons
+    public static final Item LEGENDCATALYST = registerItem("legend_catalyst", new Item(new FabricItemSettings().maxCount(1)));
     public static final Item LEGENDSHARDSMALL = registerItem("shard_small", new Item(new FabricItemSettings()));
-    public static final Item SUBLEGENDCRYST = registerItem("sub_legend_crystal", new Item(new FabricItemSettings()));
-    public static final Item LEGENDCRYST = registerItem("legend_crystal", new Item(new FabricItemSettings()));
-    public static final Item MYTHCRYST = registerItem("myth_crystal", new Item(new FabricItemSettings()));
-    public static final Item LEGENDCATALYST = registerItem("legend_catalyst", new Item(new FabricItemSettings()));
-    //set recipe remainder for legend catalyst to prevent consuming
+    public static final Item SUBLEGENDCRYST = registerItem("sub_legend_crystal", new Item(new FabricItemSettings().recipeRemainder(LEGENDCATALYST).maxCount(1)));
+    public static final Item LEGENDCRYST = registerItem("legend_crystal", new Item(new FabricItemSettings().recipeRemainder(LEGENDCATALYST).maxCount(1)));
+    public static final Item MYTHCRYST = registerItem("myth_crystal", new Item(new FabricItemSettings().recipeRemainder(LEGENDCATALYST).maxCount(1)));
+
+    public static final Item MEWTWOSUMMON = registerItem("mewtwo_summon", new Item(new FabricItemSettings().maxCount(1)));
 
     //type crystals for use in selecting legend summon
     public static final Item NORMALCRYST = registerItem("normal_essence", new Item(new FabricItemSettings()));

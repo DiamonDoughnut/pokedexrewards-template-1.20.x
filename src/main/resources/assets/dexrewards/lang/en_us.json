@@ -16,6 +16,8 @@
   "item.dexrewards.myth_crystal": "Myth Crystal",
   "item.dexrewards.legend_catalyst": "Legend Crystal Catalyst",
 
+  "item.dexrewards.mewtwo_summon": "Mewtwo Summon",
+
   "item.dexrewards.normal_essence": "Normal Essence Crystal",
   "item.dexrewards.grass_essence": "Grass Essence Crystal",
   "item.dexrewards.fire_essence": "Fire Essence Crystal",
@@ -37,6 +39,10 @@
 
   "block.dexrewards.dex_block": "Pokedex Certificate Block",
   "block.dexrewards.raw_dex_block": "Raw Pokedex Certificate Block",
+  "block.dexrewards.dex_ore": "Dex Ore",
+  "block.dexrewards.deepslate_dex_ore": "Deepslate Dex Ore",
+  "block.dexrewards.nether_dex_ore": "Nether Dex Ore",
+  "block.dexrewards.end_dex_ore": "End Dex Ore",
 
   "itemgroup.dexrewards": "Pokedex Reward Certificates"
 }

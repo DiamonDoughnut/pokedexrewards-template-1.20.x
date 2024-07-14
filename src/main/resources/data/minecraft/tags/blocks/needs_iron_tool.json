@@ -1,0 +1,7 @@
+{
+  "replace": "false",
+  "values": [
+    "dexrewards:raw_dex_block",
+    "dexrewards:dex_ore"
+  ]
+}
