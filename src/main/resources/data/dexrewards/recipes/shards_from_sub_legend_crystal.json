@@ -1,0 +1,14 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "building",
+  "ingredients": [
+    {
+      "item": "dexrewards:sub_legend_crystal"
+
+    }
+  ],
+  "result": {
+    "item": "dexrewards:shard_small",
+    "count": 9
+  }
+}

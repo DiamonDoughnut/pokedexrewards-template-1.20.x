@@ -6,6 +6,7 @@ import net.fabricmc.fabric.api.itemgroup.v1.FabricItemGroupEntries;
 import net.fabricmc.fabric.api.itemgroup.v1.ItemGroupEvents;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemGroups;
+import net.minecraft.item.ItemStack;
 import net.minecraft.registry.Registries;
 import net.minecraft.registry.Registry;
 import net.minecraft.util.Identifier;
@@ -28,6 +29,8 @@ public class ModItems {
     public static final Item SUBLEGENDCRYST = registerItem("sub_legend_crystal", new Item(new FabricItemSettings()));
     public static final Item LEGENDCRYST = registerItem("legend_crystal", new Item(new FabricItemSettings()));
     public static final Item MYTHCRYST = registerItem("myth_crystal", new Item(new FabricItemSettings()));
+    public static final Item LEGENDCATALYST = registerItem("legend_catalyst", new Item(new FabricItemSettings()));
+    //set recipe remainder for legend catalyst to prevent consuming
 
     //type crystals for use in selecting legend summon
     public static final Item NORMALCRYST = registerItem("normal_essence", new Item(new FabricItemSettings()));
@@ -58,4 +61,5 @@ public class ModItems {
     public static void RegisterModItems()   {
         DexRewards.LOGGER.info("Registering Mod Items for " + DexRewards.MOD_ID);
     }
+
 }

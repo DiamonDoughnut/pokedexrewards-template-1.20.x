@@ -1,0 +1,21 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "###",
+    "#*#",
+    "###"
+  ],
+  "key": {
+    "#": {
+      "item": "dexrewards:shard_small"
+    },
+    "*": {
+      "item": "dexrewards:legend_catalyst"
+    }
+  },
+  "result": {
+    "item": "dexrewards:sub_legend_crystal",
+    "count": 1
+  },
+  "group": "misc"
+}

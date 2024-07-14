@@ -40,6 +40,7 @@ public class ModItemGroups {
         entries.add(SUBLEGENDCRYST);
         entries.add(LEGENDCRYST);
         entries.add(MYTHCRYST);
+        entries.add(LEGENDCATALYST);
         //type crystals
         entries.add(NORMALCRYST);
         entries.add(GRASSCRYST);
