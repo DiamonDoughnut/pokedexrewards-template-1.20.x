@@ -2,6 +2,7 @@ package net.donut.dexrewards.item;
 
 import net.donut.dexrewards.DexRewards;
 import net.donut.dexrewards.block.ModBlocks;
+import net.donut.dexrewards.block.custom.DexCheckBlock;
 import net.fabricmc.fabric.api.itemgroup.v1.FabricItemGroup;
 import net.minecraft.item.ItemGroup;
 import net.minecraft.item.ItemStack;
@@ -35,6 +36,7 @@ public class ModItemGroups {
         entries.add(ModBlocks.Deepslate_Dex_Ore);
         entries.add(ModBlocks.Nether_Dex_Ore);
         entries.add(ModBlocks.End_Dex_Ore);
+        entries.add(ModBlocks.Dex_Check_Block);
     }).build());
 
     //Creative Item tab for Legend crystals

@@ -1,6 +1,7 @@
 package net.donut.dexrewards.block;
 
 import net.donut.dexrewards.DexRewards;
+import net.donut.dexrewards.block.custom.DexCheckBlock;
 import net.fabricmc.fabric.api.item.v1.FabricItemSettings;
 import net.fabricmc.fabric.api.object.builder.v1.block.FabricBlockSettings;
 import net.minecraft.block.Block;
@@ -16,6 +17,8 @@ import net.minecraft.util.math.intprovider.UniformIntProvider;
 public class ModBlocks {
     public static final Block Dex_Block = registerBlock("dex_block", new Block(FabricBlockSettings.copyOf(Blocks.IRON_BLOCK)));
     public static final Block Raw_Dex_Block = registerBlock("raw_dex_block", new Block(FabricBlockSettings.copyOf(Blocks.RAW_IRON_BLOCK)));
+
+    public static final Block Dex_Check_Block = registerBlock("dex_check_block", new DexCheckBlock(FabricBlockSettings.copyOf(Blocks.RAW_IRON_BLOCK)));
 
     public static final Block Dex_Ore = registerBlock("dex_ore", new ExperienceDroppingBlock(FabricBlockSettings.copyOf(Blocks.STONE).strength(2f), UniformIntProvider.create(2,5)));
     public static final Block Deepslate_Dex_Ore = registerBlock("deepslate_dex_ore", new ExperienceDroppingBlock(FabricBlockSettings.copyOf(Blocks.DEEPSLATE).strength(4f), UniformIntProvider.create(2,5)));

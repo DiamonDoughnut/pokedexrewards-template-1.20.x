@@ -19,6 +19,7 @@ repositories {
 	// See https://docs.gradle.org/current/userguide/declaring_repositories.html
 	// for more information about repositories.
 	maven {url 'https://maven.wispforest.io'}
+//	maven {url = "https://maven.impactdev.net/repository/development/"}
 }
 
 fabricApi {
@@ -38,6 +39,9 @@ dependencies {
 	modImplementation "io.wispforest:owo-lib:${project.owo_version}"
 	// only if you plan to use owo-config
 	annotationProcessor "io.wispforest:owo-lib:${project.owo_version}"
+
+	//cobblemon implementation
+//	modImplementation "cobblemon:mod:${cobblemon_file}"
 	
 }
 

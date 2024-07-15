@@ -6,6 +6,7 @@
     "dexrewards:dex_ore",
     "dexrewards:deepslate_dex_ore",
     "dexrewards:nether_dex_ore",
-    "dexrewards:end_dex_ore"
+    "dexrewards:end_dex_ore",
+    "dexrewards:dex_check_block"
   ]
 }

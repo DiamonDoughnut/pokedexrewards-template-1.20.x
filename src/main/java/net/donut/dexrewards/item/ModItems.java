@@ -1,6 +1,7 @@
 package net.donut.dexrewards.item;
 
 import net.donut.dexrewards.DexRewards;
+import net.donut.dexrewards.item.custom.MewtwoSummonItem;
 import net.fabricmc.fabric.api.item.v1.FabricItemSettings;
 import net.fabricmc.fabric.api.itemgroup.v1.FabricItemGroupEntries;
 import net.fabricmc.fabric.api.itemgroup.v1.ItemGroupEvents;
@@ -31,7 +32,7 @@ public class ModItems {
     public static final Item LEGENDCRYST = registerItem("legend_crystal", new Item(new FabricItemSettings().recipeRemainder(LEGENDCATALYST).maxCount(1)));
     public static final Item MYTHCRYST = registerItem("myth_crystal", new Item(new FabricItemSettings().recipeRemainder(LEGENDCATALYST).maxCount(1)));
 
-    public static final Item MEWTWOSUMMON = registerItem("mewtwo_summon", new Item(new FabricItemSettings().maxCount(1)));
+    public static final Item MEWTWOSUMMON = registerItem("mewtwo_summon", new MewtwoSummonItem(new FabricItemSettings().maxCount(1).maxDamage(1)));
 
     //type crystals for use in selecting legend summon
     public static final Item NORMALCRYST = registerItem("normal_essence", new Item(new FabricItemSettings()));

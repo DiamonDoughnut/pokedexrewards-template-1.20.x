@@ -43,6 +43,7 @@
   "block.dexrewards.deepslate_dex_ore": "Deepslate Dex Ore",
   "block.dexrewards.nether_dex_ore": "Nether Dex Ore",
   "block.dexrewards.end_dex_ore": "End Dex Ore",
+  "block.dexrewards.dex_check_block": "Dex Check Block",
 
   "itemgroup.dexrewards": "Pokedex Reward Certificates"
 }
