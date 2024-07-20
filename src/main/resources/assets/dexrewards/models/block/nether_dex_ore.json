@@ -1,6 +1,0 @@
-{
-  "parent": "block/cube_all",
-  "textures": {
-    "all": "dexrewards:block/nether_dex_ore"
-  }
-}

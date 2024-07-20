@@ -1,0 +1,25 @@
+{
+  "replace": false,
+  "values": [
+    {
+      "id": "dexrewards:soundpoi",
+      "required": false
+    },
+    {
+      "id": "dexrewards:botaniapoi",
+      "required": false
+    },
+    {
+      "id": "dexrewards:cobblemonpoi",
+      "required": false
+    },
+    {
+      "id": "dexrewards:hephaestuspoi",
+      "required": false
+    },
+    {
+      "id": "dexrewards:runepoi",
+      "required": false
+    }
+  ]
+}

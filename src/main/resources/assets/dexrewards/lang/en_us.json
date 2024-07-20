@@ -36,6 +36,9 @@
   "item.dexrewards.fairy_essence": "Fairy Essence Crystal",
   "item.dexrewards.dark_essence": "Dark Essence Crystal",
   "item.dexrewards.water_essence": "Water Essence Crystal",
+  "item.dexrewards.rock": "Rock",
+  "item.dexrewards.cowpie": "Cowpie",
+
 
   "block.dexrewards.dex_block": "Pokedex Certificate Block",
   "block.dexrewards.raw_dex_block": "Raw Pokedex Certificate Block",
@@ -45,5 +48,9 @@
   "block.dexrewards.end_dex_ore": "End Dex Ore",
   "block.dexrewards.dex_check_block": "Dex Check Block",
 
-  "itemgroup.dexrewards": "Pokedex Reward Certificates"
+  "itemgroup.dexrewards": "Pokedex Reward Certificates",
+
+  "entity.minecraft.villager.test_profession" : "Test Profession",
+
+  "tooltip.dexrewards.mewtwo_summon.tooltip": "This is a potential way to summon legends"
 }

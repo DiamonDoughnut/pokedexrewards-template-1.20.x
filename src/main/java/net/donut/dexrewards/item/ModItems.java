@@ -1,7 +1,7 @@
 package net.donut.dexrewards.item;
 
 import net.donut.dexrewards.DexRewards;
-import net.donut.dexrewards.item.custom.MewtwoSummonItem;
+
 import net.fabricmc.fabric.api.item.v1.FabricItemSettings;
 import net.fabricmc.fabric.api.itemgroup.v1.FabricItemGroupEntries;
 import net.fabricmc.fabric.api.itemgroup.v1.ItemGroupEvents;
@@ -25,34 +25,12 @@ public class ModItems {
     public static final Item DEXREWARD9 = registerItem("dexreward9", new Item(new FabricItemSettings()));
     public static final Item DEXREWARD10 = registerItem("dexreward10", new Item(new FabricItemSettings()));
 
-    //Legendary shard crystals for use in all legend summons
-    public static final Item LEGENDCATALYST = registerItem("legend_catalyst", new Item(new FabricItemSettings().maxCount(1)));
-    public static final Item LEGENDSHARDSMALL = registerItem("shard_small", new Item(new FabricItemSettings()));
-    public static final Item SUBLEGENDCRYST = registerItem("sub_legend_crystal", new Item(new FabricItemSettings().recipeRemainder(LEGENDCATALYST).maxCount(1)));
-    public static final Item LEGENDCRYST = registerItem("legend_crystal", new Item(new FabricItemSettings().recipeRemainder(LEGENDCATALYST).maxCount(1)));
-    public static final Item MYTHCRYST = registerItem("myth_crystal", new Item(new FabricItemSettings().recipeRemainder(LEGENDCATALYST).maxCount(1)));
 
-    public static final Item MEWTWOSUMMON = registerItem("mewtwo_summon", new MewtwoSummonItem(new FabricItemSettings().maxCount(1).maxDamage(1)));
+//    public static final Item MEWTWOSUMMON = registerItem("mewtwo_summon", new MewtwoSummonItem(new FabricItemSettings().maxCount(1).maxDamage(1)));
+    public static final Item ROCK = registerItem("rock", new Item(new FabricItemSettings().food(ModFoodComponents.ROCK)));
+    public static final Item COWPIE = registerItem("cowpie", new Item(new FabricItemSettings()));
 
-    //type crystals for use in selecting legend summon
-    public static final Item NORMALCRYST = registerItem("normal_essence", new Item(new FabricItemSettings()));
-    public static final Item GRASSCRYST = registerItem("grass_essence", new Item(new FabricItemSettings()));
-    public static final Item FIRECRYST = registerItem("fire_essence", new Item(new FabricItemSettings()));
-    public static final Item WATERCRYST = registerItem("water_essence", new Item(new FabricItemSettings()));
-    public static final Item ROCKCRYST = registerItem("rock_essence", new Item(new FabricItemSettings()));
-    public static final Item ELECTRICCRYST = registerItem("electric_essence", new Item(new FabricItemSettings()));
-    public static final Item POISONCRYST = registerItem("poison_essence", new Item(new FabricItemSettings()));
-    public static final Item PSYCHICCRYST = registerItem("psychic_essence", new Item(new FabricItemSettings()));
-    public static final Item GROUNDCRYST = registerItem("ground_essence", new Item(new FabricItemSettings()));
-    public static final Item FLYINGCRYST = registerItem("flying_essence", new Item(new FabricItemSettings()));
-    public static final Item BUGCRYST = registerItem("bug_essence", new Item(new FabricItemSettings()));
-    public static final Item GHOSTCRYST = registerItem("ghost_essence", new Item(new FabricItemSettings()));
-    public static final Item ICECRYST = registerItem("ice_essence", new Item(new FabricItemSettings()));
-    public static final Item STEELCRYST = registerItem("steel_essence", new Item(new FabricItemSettings()));
-    public static final Item DRAGONCRYST = registerItem("dragon_essence", new Item(new FabricItemSettings()));
-    public static final Item DARKCRYST = registerItem("dark_essence", new Item(new FabricItemSettings()));
-    public static final Item FAIRYCRYST = registerItem("fairy_essence", new Item(new FabricItemSettings()));
-    public static final Item FIGHTINGCRYST = registerItem("fighting_essence", new Item(new FabricItemSettings()));
+
 
 
 
