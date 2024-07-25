@@ -51,7 +51,7 @@ public class ModCustomTrades {
             factories.add((entity, random) -> new TradeOffer(
                     new ItemStack(ModItems.ROCK, 1),
                     //returning an enchanted book
-                    new ItemStack(ModBlocks.DEX_CHECK_BLOCK),
+                    new ItemStack(ModBlocks.DEX_MAP_BLOCK),
                     10, 2, 0.2f
             ));
         });
@@ -65,7 +65,7 @@ public class ModCustomTrades {
             ));
         });
 
-        //Import blocks and items for Botania trades
+        //Import block and items for Botania trades
         Optional<Item> externalItem;
         externalItem = Registries.ITEM.stream().filter(
                 item -> Registries.ITEM.getId(item).equals(Identifier.of("legends_dod", "legend_ore"))

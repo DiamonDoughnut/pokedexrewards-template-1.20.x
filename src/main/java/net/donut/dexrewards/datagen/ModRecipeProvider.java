@@ -14,7 +14,7 @@ import java.util.List;
 import java.util.function.Consumer;
 
 public class ModRecipeProvider extends FabricRecipeProvider {
-    //make a list for all smeltable blocks so future uses are compact
+    //make a list for all smeltable block so future uses are compact
 //    private static final List<ItemConvertible> DEX_SMELTABLES =
 //            List.of(
 //                    ModItems.DEXREWARD1,

@@ -17,9 +17,9 @@ public class ModBlockTagProvider extends FabricTagProvider.BlockTagProvider {
     protected void configure(RegistryWrapper.WrapperLookup arg) {
         //example for custom tags
  //       getOrCreateTagBuilder(ModTags.Blocks.METAL_DETECTOR_DETECTABLE_BLOCKS)
-                //blocks from the current mod can be added with the basic add function
+                //block from the current mod can be added with the basic add function
  //               .add(ModBlocks.Dex_Ore)
-                //blocks from minecraft or other mods need a forceAddTag function
+                //block from minecraft or other mods need a forceAddTag function
  //               .forceAddTag(BlockTags.GOLD_ORES)
  //               .forceAddTag(BlockTags.EMERALD_ORES)
  //               .forceAddTag(BlockTags.REDSTONE_ORES)
@@ -37,13 +37,13 @@ public class ModBlockTagProvider extends FabricTagProvider.BlockTagProvider {
   //              .add(ModBlocks.Nether_Dex_Ore)
   //              .add(ModBlocks.Dex_Block)
   //              .add(ModBlocks.Raw_Dex_Block)
-                .add(ModBlocks.DEX_CHECK_BLOCK)
+                .add(ModBlocks.DEX_MAP_BLOCK)
                 //delete once dependencies enabled
                 .add(ModBlocks.BOTANIA_BLOCK)
                 .add(ModBlocks.COBBLEMON_BLOCK)
                 .add(ModBlocks.HEPHAESTUS_BLOCK)
                 .add(ModBlocks.RUNE_BLOCK)
-                .add(ModBlocks.ARCHAEO_BLOCK);
+                .add(ModBlocks.ARCHEO_BLOCK);
 
   //      getOrCreateTagBuilder(BlockTags.NEEDS_STONE_TOOL)
   //              .add(ModBlocks.Dex_Block);

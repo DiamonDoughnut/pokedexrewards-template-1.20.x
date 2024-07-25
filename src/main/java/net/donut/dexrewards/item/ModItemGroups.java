@@ -28,14 +28,14 @@ public class ModItemGroups {
         entries.add(DEXREWARD9);
         entries.add(DEXREWARD10);
 
-        //blocks to be commented out/changed later
+        //block to be commented out/changed later
 //        entries.add(ModBlocks.Dex_Block);
 //        entries.add(ModBlocks.Raw_Dex_Block);
 //        entries.add(ModBlocks.Dex_Ore);
 //        entries.add(ModBlocks.Deepslate_Dex_Ore);
 //        entries.add(ModBlocks.Nether_Dex_Ore);
 //        entries.add(ModBlocks.End_Dex_Ore);
-        entries.add(ModBlocks.DEX_CHECK_BLOCK);
+        entries.add(ModBlocks.DEX_MAP_BLOCK);
         entries.add(ROCK);
         entries.add(COWPIE);
     }).build());

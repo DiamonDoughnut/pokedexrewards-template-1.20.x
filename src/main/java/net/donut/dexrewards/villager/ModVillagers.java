@@ -3,7 +3,6 @@ package net.donut.dexrewards.villager;
 import com.google.common.collect.ImmutableSet;
 import net.donut.dexrewards.DexRewards;
 import net.donut.dexrewards.block.ModBlocks;
-import net.donut.dexrewards.item.ModItems;
 import net.fabricmc.fabric.api.object.builder.v1.world.poi.PointOfInterestHelper;
 import net.minecraft.block.Block;
 import net.minecraft.item.Item;
@@ -16,14 +15,13 @@ import net.minecraft.util.Identifier;
 import net.minecraft.village.VillagerProfession;
 import net.minecraft.world.poi.PointOfInterestType;
 
-import java.util.Objects;
 import java.util.Optional;
 
 public class ModVillagers {
     //initialize block sound key - name field is same used in most other related fields to reference here
     public static final RegistryKey<PointOfInterestType> SOUND_POI_KEY = poiKey("soundpoi");
     //define job block - name field must be same as above
-    public static final PointOfInterestType SOUND_POI = registerPoi("soundpoi", ModBlocks.DEX_CHECK_BLOCK);
+    public static final PointOfInterestType SOUND_POI = registerPoi("soundpoi", ModBlocks.DEX_MAP_BLOCK);
     //initialize new job and connect to sound key - name field must be same as texture file
     public static final VillagerProfession TEST_PROFESSION = registerProfession("test_profession", SOUND_POI_KEY);
 
@@ -31,7 +29,7 @@ public class ModVillagers {
     public static String botaniaName = "botaniapoi";
     public static Optional<Block> botaniaBlock = null;
     public static Block modVillagersBotania(){
-        if(checkModPresence("botania", "wand")){
+        if(checkModPresence("botania", "dreamwood_wand")){
             botaniaBlock = Registries.BLOCK.stream().filter(block -> Identifier.of("botania", "apothecary_default").equals(Registries.BLOCK.getId(block))).findFirst();
             return botaniaBlock.get();
         }
@@ -49,7 +47,7 @@ public class ModVillagers {
     public static String cobblemonName = "cobblemonpoi";
     public static Optional<Block> cobblemonBlock = null;
     public static Block modVillagersCobblemon(){
-        if(checkModPresence("cobblemon", "wand")){
+        if(checkModPresence("cobblemon", "poke_ball")){
             cobblemonBlock = Registries.BLOCK.stream().filter(block -> Identifier.of("cobblemon", "pasture").equals(Registries.BLOCK.getId(block))).findFirst();
             return cobblemonBlock.get();
         }
@@ -65,7 +63,7 @@ public class ModVillagers {
     public static String hephaestusName = "hephaestuspoi";
     public static Optional<Block> hephaestusBlock = null;
     public static Block modVillagersHephaestus(){
-        if(checkModPresence("tconstruct", "wand")){
+        if(checkModPresence("tconstruct", "seared_brick")){
             hephaestusBlock = Registries.BLOCK.stream().filter(block -> Identifier.of("tconstruct", "seared_melter").equals(Registries.BLOCK.getId(block))).findFirst();
             return hephaestusBlock.get();
         }
@@ -81,7 +79,7 @@ public class ModVillagers {
     public static String runeName = "runepoi";
     public static Optional<Block> runeBlock = null;
     public static Block modVillagersRunicEnchanting(){
-        if(checkModPresence("runic_enchanting", "wand")){
+        if(checkModPresence("runic_enchanting", "rune_chalk")){
             runeBlock = Registries.BLOCK.stream().filter(block -> Identifier.of("runic_enchanting", "rune_enchanting_table").equals(Registries.BLOCK.getId(block))).findFirst();
             return runeBlock.get();
         }
@@ -97,16 +95,16 @@ public class ModVillagers {
     public static String archaeologyName = "archaeologypoi";
     public static Optional<Block> archaeologyBlock = null;
     public static Block modVillagersArchaeologyComplex(){
-        if(checkModPresence("betterarcheology", "wand")){
+        if(checkModPresence("betterarcheology", "iron_brush")){
             archaeologyBlock = Registries.BLOCK.stream().filter(block -> Identifier.of("betterarcheology", "archeology_table").equals(Registries.BLOCK.getId(block))).findFirst();
             return archaeologyBlock.get();
         }
         else {
-            return ModBlocks.ARCHAEO_BLOCK;
+            return ModBlocks.ARCHEO_BLOCK;
         }
-    }    public static final RegistryKey<PointOfInterestType> ARCHAEO_POI_KEY = poiKey("archaeopoi");
-    public static final PointOfInterestType ARCHAEO_SOUND_POI = registerPoi("archaeopoi", modVillagersArchaeologyComplex());
-    public static final VillagerProfession ARCHAEO_VILLAGER = registerProfession("archaeo_villager", ARCHAEO_POI_KEY);
+    }    public static final RegistryKey<PointOfInterestType> ARCHEO_POI_KEY = poiKey("archaeopoi");
+    public static final PointOfInterestType ARCHEO_SOUND_POI = registerPoi("archaeopoi", modVillagersArchaeologyComplex());
+    public static final VillagerProfession ARCHEO_VILLAGER = registerProfession("archeo_villager", ARCHEO_POI_KEY);
 
     public static boolean checkModPresence(String namespace, String key){
         Optional<Item> modItemFinal = Registries.ITEM.stream().filter(item -> Identifier.of(namespace, key).equals(Registries.ITEM.getId(item))).findFirst();

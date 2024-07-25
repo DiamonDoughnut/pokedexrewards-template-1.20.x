@@ -15,14 +15,13 @@ public class ModModelProvider extends FabricModelProvider {
 
     @Override
     public void generateBlockStateModels(BlockStateModelGenerator blockStateModelGenerator) {
-        //this works for blocks with the same texture on all sides
+        //this works for block with the same texture on all sides
         //generates both block and model json files
 //        blockStateModelGenerator.registerSimpleCubeAll(ModBlocks.End_Dex_Ore);
 //        blockStateModelGenerator.registerSimpleCubeAll(ModBlocks.Dex_Ore);
 //        blockStateModelGenerator.registerSimpleCubeAll(ModBlocks.Nether_Dex_Ore);
 //        blockStateModelGenerator.registerSimpleCubeAll(ModBlocks.Deepslate_Dex_Ore);
 //        blockStateModelGenerator.registerSimpleCubeAll(ModBlocks.Dex_Block);
-        blockStateModelGenerator.registerSimpleCubeAll(ModBlocks.DEX_CHECK_BLOCK);
         //delete once dependencies enabled
         blockStateModelGenerator.registerSimpleCubeAll(ModBlocks.BOTANIA_BLOCK);
         blockStateModelGenerator.registerSimpleCubeAll(ModBlocks.COBBLEMON_BLOCK);

@@ -13,19 +13,19 @@ public class ModLootTableProvider extends FabricBlockLootTableProvider {
     public void generate() {
         //for dropping the block when broken, as per Oak Log or such
 //        addDrop(ModBlocks.Dex_Block);
-        addDrop(ModBlocks.DEX_CHECK_BLOCK);
+        addDrop(ModBlocks.DEX_MAP_BLOCK);
         //delete once dependencies enabled
         addDrop(ModBlocks.BOTANIA_BLOCK);
         addDrop(ModBlocks.COBBLEMON_BLOCK);
         addDrop(ModBlocks.HEPHAESTUS_BLOCK);
         addDrop(ModBlocks.RUNE_BLOCK);
-        addDrop(ModBlocks.ARCHAEO_BLOCK);
+        addDrop(ModBlocks.ARCHEO_BLOCK);
 
         //for dropping ore/similar items when broken, as per Diamond Ore, et.c.
         // this method drops 1 item:        dropped with silk touch     dropped with normal
         //addDrop(ModBlocks.Dex_Ore, oreDrops(ModBlocks.Dex_Ore, ModItems.LEGENDSHARDSMALL));
 
-        //instead copying over the function for copper ore blocks and renaming it will allow us to drop more
+        //instead copying over the function for copper ore block and renaming it will allow us to drop more
 //        addDrop(ModBlocks.Dex_Ore, copperLikeOreDrops(ModBlocks.Dex_Ore, ModItems.LEGENDSHARDSMALL));
 //        addDrop(ModBlocks.Deepslate_Dex_Ore, copperLikeOreDrops(ModBlocks.Deepslate_Dex_Ore, ModItems.LEGENDSHARDSMALL));
 //        addDrop(ModBlocks.Nether_Dex_Ore, copperLikeOreDrops(ModBlocks.Nether_Dex_Ore, ModItems.LEGENDSHARDSMALL));
