@@ -1,10 +1,10 @@
 {
   "replace": false,
   "values": [
-    "dexrewards:dex_check_block",
-    "dexrewards:dex_check_block",
-    "dexrewards:dex_check_block",
-    "dexrewards:dex_check_block",
-    "dexrewards:dex_check_block"
+    "dexrewards:botania_block",
+    "dexrewards:cobblemon_block",
+    "dexrewards:hephaestus_block",
+    "dexrewards:rune_block",
+    "dexrewards:archeo_block"
   ]
 }

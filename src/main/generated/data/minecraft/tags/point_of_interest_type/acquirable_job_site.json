@@ -2,10 +2,6 @@
   "replace": false,
   "values": [
     {
-      "id": "dexrewards:soundpoi",
-      "required": false
-    },
-    {
       "id": "dexrewards:botaniapoi",
       "required": false
     },

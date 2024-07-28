@@ -1,0 +1,18 @@
+{
+  "replace": false,
+  "values": [
+    "dexrewards:dexreward_25",
+    "dexrewards:dexreward_50",
+    "dexrewards:dexreward_75",
+    "dexrewards:dexreward_100",
+    "dexrewards:dexreward_kanto",
+    "dexrewards:dexreward_johto",
+    "dexrewards:dexreward_hoenn",
+    "dexrewards:dexreward_sinnoh",
+    "dexrewards:dexreward_unova",
+    "dexrewards:dexreward_kalos",
+    "dexrewards:dexreward_alola",
+    "dexrewards:dexreward_galar",
+    "dexrewards:dexreward_paldea"
+  ]
+}

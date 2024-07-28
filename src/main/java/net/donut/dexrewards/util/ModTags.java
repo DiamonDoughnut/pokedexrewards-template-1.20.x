@@ -24,5 +24,6 @@ public class ModTags {
         private static TagKey<Item> createTag(String name) {
             return TagKey.of(RegistryKeys.ITEM, new Identifier(DexRewards.MOD_ID, name));
         }
+        public static final TagKey<Item> DEX_REWARD_ITEMS = createTag("dex_reward_items");
     }
 }

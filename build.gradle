@@ -2,6 +2,7 @@ plugins {
 	id 'fabric-loom' version '1.7-SNAPSHOT'
 
 	id 'maven-publish'
+    id 'org.jetbrains.kotlin.jvm'
 }
 
 
@@ -19,6 +20,15 @@ repositories {
 	// See https://docs.gradle.org/current/userguide/declaring_repositories.html
 	// for more information about repositories.
 	maven {url 'https://maven.wispforest.io'}
+    mavenCentral()
+	maven {
+		name = 'GeckoLib'
+		url 'https://dl.cloudsmith.io/public/geckolib3/geckolib/maven/'
+		content {
+			includeGroupByRegex("software\\.bernie.*")
+			includeGroup("com.eliotlash.mclib")
+		}
+	}
 //	maven {url = "https://maven.impactdev.net/repository/development/"}
 }
 
@@ -39,8 +49,12 @@ dependencies {
 	modImplementation "io.wispforest:owo-lib:${project.owo_version}"
 	// only if you plan to use owo-config
 	annotationProcessor "io.wispforest:owo-lib:${project.owo_version}"
+    implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk8"
+	modImplementation("software.bernie.geckolib:geckolib-fabric-${minecraft_version}:${geckolib_version}")
+	implementation("com.eliotlash.mclib:mclib:20")
 
-	//cobblemon implementation
+
+    //cobblemon implementation
 //	modImplementation "cobblemon:mod:${cobblemon_file}"
 	
 }
@@ -63,8 +77,6 @@ java {
 	// If you remove this line, sources will not be generated.
 	withSourcesJar()
 
-	sourceCompatibility = JavaVersion.VERSION_17
-	targetCompatibility = JavaVersion.VERSION_17
 }
 
 jar {
@@ -89,4 +101,7 @@ publishing {
 		// The repositories here will be used for publishing your artifact, not for
 		// retrieving dependencies.
 	}
+}
+kotlin {
+    jvmToolchain(17)
 }

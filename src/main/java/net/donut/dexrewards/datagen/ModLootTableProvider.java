@@ -11,7 +11,7 @@ public class ModLootTableProvider extends FabricBlockLootTableProvider {
 
     @Override
     public void generate() {
-        //for dropping the block when broken, as per Oak Log or such
+        //for dropping the block when broken (with tool if tag present), as per Oak Log or such
 //        addDrop(ModBlocks.Dex_Block);
         addDrop(ModBlocks.DEX_MAP_BLOCK);
         //delete once dependencies enabled
@@ -20,6 +20,7 @@ public class ModLootTableProvider extends FabricBlockLootTableProvider {
         addDrop(ModBlocks.HEPHAESTUS_BLOCK);
         addDrop(ModBlocks.RUNE_BLOCK);
         addDrop(ModBlocks.ARCHEO_BLOCK);
+
 
         //for dropping ore/similar items when broken, as per Diamond Ore, et.c.
         // this method drops 1 item:        dropped with silk touch     dropped with normal

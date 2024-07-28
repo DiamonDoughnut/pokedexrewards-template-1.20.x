@@ -1,11 +1,18 @@
 package net.donut.dexrewards.datagen;
 
 import net.donut.dexrewards.block.ModBlocks;
+import net.donut.dexrewards.block.custom.AbstractDexMapBlock;
+import net.donut.dexrewards.block.custom.DexMapBlock;
+import net.donut.dexrewards.block.custom.DexMapBlockEntity;
+import net.donut.dexrewards.client.render.model.ModModelLoader;
+import net.donut.dexrewards.data.client.ModTextureKeys;
 import net.donut.dexrewards.item.ModItems;
 import net.fabricmc.fabric.api.datagen.v1.FabricDataOutput;
 import net.fabricmc.fabric.api.datagen.v1.provider.FabricModelProvider;
+import net.minecraft.data.DataProvider;
 import net.minecraft.data.client.BlockStateModelGenerator;
 import net.minecraft.data.client.ItemModelGenerator;
+import net.minecraft.data.client.Model;
 import net.minecraft.data.client.Models;
 
 public class ModModelProvider extends FabricModelProvider {
@@ -28,6 +35,7 @@ public class ModModelProvider extends FabricModelProvider {
         blockStateModelGenerator.registerSimpleCubeAll(ModBlocks.HEPHAESTUS_BLOCK);
         blockStateModelGenerator.registerSimpleCubeAll(ModBlocks.RUNE_BLOCK);
 //        blockStateModelGenerator.registerSimpleCubeAll(ModBlocks.Raw_Dex_Block);
+        blockStateModelGenerator.registerSingleton(ModBlocks.DEX_MAP_BLOCK, ModTextureKeys.dex_map, new Model(null, null,ModTextureKeys.DEX_MAP));
     }
 
     @Override
@@ -57,17 +65,19 @@ public class ModModelProvider extends FabricModelProvider {
 //        itemModelGenerator.register(ModItems.FIGHTINGCRYST, Models.GENERATED);
 //        itemModelGenerator.register(ModItems.STEELCRYST, Models.GENERATED);
 //        itemModelGenerator.register(ModItems.ICECRYST, Models.GENERATED);
-        itemModelGenerator.register(ModItems.DEXREWARD1, Models.GENERATED);
-        itemModelGenerator.register(ModItems.DEXREWARD2, Models.GENERATED);
-        itemModelGenerator.register(ModItems.DEXREWARD3, Models.GENERATED);
-        itemModelGenerator.register(ModItems.DEXREWARD4, Models.GENERATED);
-        itemModelGenerator.register(ModItems.DEXREWARD5, Models.GENERATED);
-        itemModelGenerator.register(ModItems.DEXREWARD6, Models.GENERATED);
-        itemModelGenerator.register(ModItems.DEXREWARD7, Models.GENERATED);
-        itemModelGenerator.register(ModItems.DEXREWARD8, Models.GENERATED);
-        itemModelGenerator.register(ModItems.DEXREWARD9, Models.GENERATED);
-        itemModelGenerator.register(ModItems.DEXREWARD10, Models.GENERATED);
+//        itemModelGenerator.register(ModItems.DEXREWARDKANTO, Models.GENERATED);
+//        itemModelGenerator.register(ModItems.DEXREWARDJOHTO, Models.GENERATED);
+//        itemModelGenerator.register(ModItems.DEXREWARDHOENN, Models.GENERATED);
+//        itemModelGenerator.register(ModItems.DEXREWARDSINNOH, Models.GENERATED);
+//        itemModelGenerator.register(ModItems.DEXREWARDUNOVA, Models.GENERATED);
+//        itemModelGenerator.register(ModItems.DEXREWARDKALOS, Models.GENERATED);
+//        itemModelGenerator.register(ModItems.DEXREWARDALOLA, Models.GENERATED);
+//        itemModelGenerator.register(ModItems.DEXREWARDGALAR, Models.GENERATED);
+//        itemModelGenerator.register(ModItems.DEXREWARDPALDEA, Models.GENERATED);
+//        itemModelGenerator.register(ModItems.DEXREWARD25, Models.GENERATED);
+//        itemModelGenerator.register(ModItems.DEXREWARD50, Models.GENERATED);
+//        itemModelGenerator.register(ModItems.DEXREWARD75, Models.GENERATED);
+//        itemModelGenerator.register(ModItems.DEXREWARD100, Models.GENERATED);
         itemModelGenerator.register(ModItems.ROCK, Models.GENERATED);
-        itemModelGenerator.register(ModItems.COWPIE, Models.GENERATED);
     }
 }

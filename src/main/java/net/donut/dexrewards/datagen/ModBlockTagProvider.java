@@ -37,7 +37,7 @@ public class ModBlockTagProvider extends FabricTagProvider.BlockTagProvider {
   //              .add(ModBlocks.Nether_Dex_Ore)
   //              .add(ModBlocks.Dex_Block)
   //              .add(ModBlocks.Raw_Dex_Block)
-                .add(ModBlocks.DEX_MAP_BLOCK)
+   //             .add(ModBlocks.DEX_MAP_BLOCK)
                 //delete once dependencies enabled
                 .add(ModBlocks.BOTANIA_BLOCK)
                 .add(ModBlocks.COBBLEMON_BLOCK)

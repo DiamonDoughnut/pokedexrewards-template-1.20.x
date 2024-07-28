@@ -18,12 +18,12 @@ import net.minecraft.world.poi.PointOfInterestType;
 import java.util.Optional;
 
 public class ModVillagers {
-    //initialize block sound key - name field is same used in most other related fields to reference here
-    public static final RegistryKey<PointOfInterestType> SOUND_POI_KEY = poiKey("soundpoi");
-    //define job block - name field must be same as above
-    public static final PointOfInterestType SOUND_POI = registerPoi("soundpoi", ModBlocks.DEX_MAP_BLOCK);
-    //initialize new job and connect to sound key - name field must be same as texture file
-    public static final VillagerProfession TEST_PROFESSION = registerProfession("test_profession", SOUND_POI_KEY);
+//    //initialize block sound key - name field is same used in most other related fields to reference here
+//    public static final RegistryKey<PointOfInterestType> SOUND_POI_KEY = poiKey("soundpoi");
+//    //define job block - name field must be same as above
+//    public static final PointOfInterestType SOUND_POI = registerPoi("soundpoi", ModBlocks.DEX_MAP_BLOCK);
+//    //initialize new job and connect to sound key - name field must be same as texture file
+//    public static final VillagerProfession TEST_PROFESSION = registerProfession("test_profession", SOUND_POI_KEY);
 
     //soft dependency: botania
     public static String botaniaName = "botaniapoi";
