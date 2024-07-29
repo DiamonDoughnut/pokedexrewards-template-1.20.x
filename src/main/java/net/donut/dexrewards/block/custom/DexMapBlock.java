@@ -1,17 +1,16 @@
 package net.donut.dexrewards.block.custom;
 
+import net.donut.dexrewards.block.entities.DexMapBlockEntity;
+import net.donut.dexrewards.item.ModItems;
 import net.minecraft.block.*;
 import net.minecraft.block.entity.BlockEntity;
-import net.minecraft.block.entity.BlockEntityType;
 import net.minecraft.client.item.TooltipContext;
 import net.minecraft.client.resource.ResourceIndex;
 import net.minecraft.entity.player.PlayerEntity;
-import net.minecraft.item.ItemPlacementContext;
 import net.minecraft.item.ItemStack;
 import net.minecraft.sound.SoundCategory;
 import net.minecraft.sound.SoundEvents;
-import net.minecraft.state.property.DirectionProperty;
-import net.minecraft.state.property.Properties;
+import net.minecraft.state.StateManager;
 import net.minecraft.text.Text;
 import net.minecraft.util.ActionResult;
 import net.minecraft.util.Hand;
@@ -24,49 +23,62 @@ import net.minecraft.world.BlockView;
 import net.minecraft.world.World;
 import org.jetbrains.annotations.Nullable;
 
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-import java.util.function.Supplier;
+import java.util.*;
 
-public abstract class DexMapBlock extends AbstractDexMapBlock<DexMapBlockEntity>{
+public abstract class DexMapBlock extends BlockWithEntity{
 
-    protected DexMapBlock(Settings settings, Supplier<BlockEntityType<? extends DexMapBlockEntity>> supplier) {
-        super(settings, supplier);
-        this.setDefaultState(this.stateManager.getDefaultState().with(FACING, Direction.NORTH));
 
+
+    protected DexMapBlock(Settings settings) {
+        super(settings);
     }
-
-    public static DirectionProperty FACING;
 
     @Override
     public VoxelShape getOutlineShape(BlockState state, BlockView world, BlockPos pos, ShapeContext context) {
-        Direction direction = (Direction) state.get(FACING);
-        switch (direction) {
-            case NORTH:
-                return VoxelShapes.cuboid(-16 / 16f, 0, 14 / 16f, 32 / 16f, 28 / 16f, 16 / 16f);
-            case EAST:
-                return VoxelShapes.cuboid(0f, 0, -16 / 16f, 2 / 16f, 28 / 16f, 32 / 16f);
-            case SOUTH:
-                return VoxelShapes.cuboid(-16 / 16f, 0, 0, 32 / 16f, 28 / 16f, 2 / 16f);
-            case WEST:
-                return VoxelShapes.cuboid(14 / 16f, 0, -16 / 16f, 16 / 16f, 28 / 16f, 32 / 16f);
-            default:
-                return VoxelShapes.fullCube();
-        }
+        Direction direction = state.get(HorizontalFacingBlock.FACING);
+        return switch (direction) {
+            case NORTH -> VoxelShapes.cuboid(-16 / 16f, 0, 14 / 16f, 32 / 16f, 28 / 16f, 16 / 16f);
+            case EAST -> VoxelShapes.cuboid(0f, 0, -16 / 16f, 2 / 16f, 28 / 16f, 32 / 16f);
+            case SOUTH -> VoxelShapes.cuboid(-16 / 16f, 0, 0, 32 / 16f, 28 / 16f, 2 / 16f);
+            case WEST -> VoxelShapes.cuboid(14 / 16f, 0, -16 / 16f, 16 / 16f, 28 / 16f, 32 / 16f);
+            default -> VoxelShapes.fullCube();
+        };
     }
 
-    @Nullable
-    @Override
-    public BlockState getPlacementState(ItemPlacementContext ctx) {
-        return super.getPlacementState(ctx).with(Properties.HORIZONTAL_FACING, ctx.getHorizontalPlayerFacing().getOpposite());
-    }
+
     @Override
     public ActionResult onUse(BlockState state, World world, BlockPos pos, PlayerEntity player, Hand hand, BlockHitResult hit) {
-
-        world.playSound(player, pos, SoundEvents.BLOCK_NOTE_BLOCK_HARP.value(), SoundCategory.BLOCKS, 1f, 1f);
-
+        Set<Integer> tokens = Set.of(0);
+        int i = 0;
+        ItemStack stack = player.getStackInHand(hand);
+        if(stack.isOf(ModItems.DEXREWARD25) && !tokens.contains(1)) {
+            world.playSound(player, pos, SoundEvents.BLOCK_NOTE_BLOCK_HARP.value(), SoundCategory.BLOCKS, 1f, 1f);
+            tokens.add(1);
+            i++;
+        } else if (stack.isOf(ModItems.DEXREWARD50) && !tokens.contains(2)) {
+            world.playSound(player, pos, SoundEvents.BLOCK_AMETHYST_BLOCK_CHIME, SoundCategory.BLOCKS);
+            tokens.add(2);
+            i++;
+        } else if (stack.isOf(ModItems.DEXREWARD75) && !tokens.contains(3)) {
+            world.playSound(player, pos, SoundEvents.BLOCK_NOTE_BLOCK_BASEDRUM.value(), SoundCategory.BLOCKS);
+            tokens.add(3);
+            i++;
+        } else if (stack.isOf(ModItems.DEXREWARD100) && !tokens.contains(4)) {
+            world.playSound(player, pos, SoundEvents.BLOCK_NOTE_BLOCK_IRON_XYLOPHONE.value(), SoundCategory.BLOCKS);
+            tokens.add(4);
+            i++;
+        }
+        i = tokens.size() - 1;
+        //for (int l = 0; l <= i; l++){
+        //
+        //}
         return ActionResult.SUCCESS;
+
+    }
+
+    @Override
+    public BlockRenderType getRenderType(BlockState state) {
+        return BlockRenderType.MODEL;
     }
 
     private static final Map<String, ResourceIndex> LAYERED_LOCATION_CACHE = new HashMap<>();
@@ -79,6 +91,10 @@ public abstract class DexMapBlock extends AbstractDexMapBlock<DexMapBlockEntity>
         super.appendTooltip(stack, world, tooltip, options);
     }
 
+    @Override
+    protected void appendProperties(StateManager.Builder<Block, BlockState> builder) {
+        builder.add(HorizontalFacingBlock.FACING);
+    }
 
     @Nullable
     @Override

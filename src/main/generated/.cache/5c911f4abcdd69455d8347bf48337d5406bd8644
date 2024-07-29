@@ -1,4 +1,4 @@
-// 1.20.1	2024-07-25T17:27:44.7405323	PokedexRewards/Model Definitions
+// 1.20.1	2024-07-29T06:04:54.1780453	PokedexRewards/Model Definitions
 c6d016920df52d15d16dd80c2acba187af460b2a assets\dexrewards\models\item\dexreward_75.json
 733bc34bea7fe6a4e6710187e95af37fff2366b8 assets\dexrewards\models\item\cobblemon_block.json
 1902a8857b59c1eed4e9b45dc1c2c0be1d950816 assets\dexrewards\blockstates\botania_block.json
@@ -18,8 +18,8 @@ dc048cc6afc7ebbfff9c97e1bb8e2619b17888d7 assets\dexrewards\models\block\hephaest
 1822a9b79c03710a4c2100b66c126534b5dc2a4a assets\dexrewards\models\item\dexreward_paldea.json
 a2aa76e53841e81a5fa3f00f14ba40593f201eba assets\dexrewards\models\item\dexreward_kalos.json
 530ccce8c6dda4ff3acabdc2615394ca3cbb1496 assets\dexrewards\models\item\dexreward_galar.json
-2fa1361fbbc229711af056a4c0629dd2beee686b assets\dexrewards\models\item\dexreward_alola.json
 4d98387ed5370d1d0d77fb0971ea6262df54b590 assets\dexrewards\models\item\dexreward_100.json
+2fa1361fbbc229711af056a4c0629dd2beee686b assets\dexrewards\models\item\dexreward_alola.json
 75ecb5268b0f8a12489c9df96b00b66e278915a6 assets\dexrewards\blockstates\cobblemon_block.json
 9f1853ebd1f8d5edfb7156a87a7fa21a0c87d88c assets\dexrewards\models\block\botania_block.json
 184149ea3f0f1da5f066a12ca5a9dd720f0cfa6f assets\dexrewards\blockstates\rune_block.json

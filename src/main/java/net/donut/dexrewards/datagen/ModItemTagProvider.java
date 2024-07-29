@@ -1,7 +1,7 @@
 package net.donut.dexrewards.datagen;
 
+import net.donut.dexrewards.block.ModBlocks;
 import net.donut.dexrewards.item.ModItems;
-import net.donut.dexrewards.item.custom.MapTokens;
 import net.donut.dexrewards.util.ModTags;
 import net.fabricmc.fabric.api.datagen.v1.FabricDataOutput;
 import net.fabricmc.fabric.api.datagen.v1.provider.FabricTagProvider;
@@ -17,20 +17,19 @@ public class ModItemTagProvider extends FabricTagProvider.ItemTagProvider {
     @Override
     protected void configure(RegistryWrapper.WrapperLookup arg) {
         getOrCreateTagBuilder(ModTags.Items.DEX_REWARD_ITEMS)
-                .add(MapTokens.BASE.getRegistry())
-                .add(MapTokens.KANTO.getRegistry())
-                .add(MapTokens.JOHTO.getRegistry())
-                .add(MapTokens.HOENN.getRegistry())
-                .add(MapTokens.SINNOH.getRegistry())
-                .add(MapTokens.UNOVA.getRegistry())
-                .add(MapTokens.KALOS.getRegistry())
-                .add(MapTokens.ALOLA.getRegistry())
-                .add(MapTokens.GALAR.getRegistry())
-                .add(MapTokens.PALDEA.getRegistry())
-                .add(MapTokens.DEX25.getRegistry())
-                .add(MapTokens.DEX50.getRegistry())
-                .add(MapTokens.DEX75.getRegistry())
-                .add(MapTokens.DEX100.getRegistry());
+                .add(ModItems.DEXREWARDKANTO)
+                .add(ModItems.DEXREWARDJOHTO)
+                .add(ModItems.DEXREWARDHOENN)
+                .add(ModItems.DEXREWARDSINNOH)
+                .add(ModItems.DEXREWARDUNOVA)
+                .add(ModItems.DEXREWARDKALOS)
+                .add(ModItems.DEXREWARDALOLA)
+                .add(ModItems.DEXREWARDGALAR)
+                .add(ModItems.DEXREWARDPALDEA)
+                .add(ModItems.DEXREWARD25)
+                .add(ModItems.DEXREWARD50)
+                .add(ModItems.DEXREWARD75)
+                .add(ModItems.DEXREWARD100);
 
     }
 }

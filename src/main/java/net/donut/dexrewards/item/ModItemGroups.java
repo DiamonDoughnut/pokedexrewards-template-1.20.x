@@ -2,7 +2,6 @@ package net.donut.dexrewards.item;
 
 import net.donut.dexrewards.DexRewards;
 import net.donut.dexrewards.block.ModBlocks;
-import net.donut.dexrewards.item.custom.MapTokens;
 import net.fabricmc.fabric.api.itemgroup.v1.FabricItemGroup;
 import net.minecraft.item.ItemConvertible;
 import net.minecraft.item.ItemGroup;
@@ -13,26 +12,25 @@ import net.minecraft.text.Text;
 import net.minecraft.util.Identifier;
 
 import static net.donut.dexrewards.item.ModItems.*;
-import static net.donut.dexrewards.item.custom.MapTokens.*;
 
 public class ModItemGroups {
 
     //Creative Item tab for Dex Reward Items
-    public static final ItemGroup DEX_REWARDS = Registry.register(Registries.ITEM_GROUP, new Identifier(DexRewards.MOD_ID, "dexrewards"), FabricItemGroup.builder().displayName(Text.translatable("itemgroup.dexrewards")).icon(() -> new ItemStack((ItemConvertible) DEX100)).entries((displayContext, entries) -> {
+    public static final ItemGroup DEX_REWARDS = Registry.register(Registries.ITEM_GROUP, new Identifier(DexRewards.MOD_ID, "dexrewards"), FabricItemGroup.builder().displayName(Text.translatable("itemgroup.dexrewards")).icon(() -> new ItemStack(DEXREWARD100)).entries((displayContext, entries) -> {
         //dex completion items
-        entries.add((ItemConvertible) KANTO);
-        entries.add((ItemConvertible) JOHTO);
-        entries.add((ItemConvertible) HOENN);
-        entries.add((ItemConvertible) SINNOH);
-        entries.add((ItemConvertible) UNOVA);
-        entries.add((ItemConvertible) KALOS);
-        entries.add((ItemConvertible) ALOLA);
-        entries.add((ItemConvertible) GALAR);
-        entries.add((ItemConvertible) PALDEA);
-        entries.add((ItemConvertible) DEX25);
-        entries.add((ItemConvertible) DEX50);
-        entries.add((ItemConvertible) DEX75);
-        entries.add((ItemConvertible) DEX100);
+        entries.add(DEXREWARDKANTO);
+        entries.add(DEXREWARDJOHTO);
+        entries.add(DEXREWARDHOENN);
+        entries.add(DEXREWARDSINNOH);
+        entries.add(DEXREWARDUNOVA);
+        entries.add(DEXREWARDKALOS);
+        entries.add(DEXREWARDALOLA);
+        entries.add(DEXREWARDGALAR);
+        entries.add(DEXREWARDPALDEA);
+        entries.add(DEXREWARD25);
+        entries.add(DEXREWARD50);
+        entries.add(DEXREWARD75);
+        entries.add(DEXREWARD100);
 
         //block to be commented out/changed later
 //        entries.add(ModBlocks.Dex_Block);

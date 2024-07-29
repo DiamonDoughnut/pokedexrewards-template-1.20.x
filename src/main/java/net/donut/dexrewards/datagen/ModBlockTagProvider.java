@@ -19,45 +19,17 @@ public class ModBlockTagProvider extends FabricTagProvider.BlockTagProvider {
  //       getOrCreateTagBuilder(ModTags.Blocks.METAL_DETECTOR_DETECTABLE_BLOCKS)
                 //block from the current mod can be added with the basic add function
  //               .add(ModBlocks.Dex_Ore)
-                //block from minecraft or other mods need a forceAddTag function
- //               .forceAddTag(BlockTags.GOLD_ORES)
- //               .forceAddTag(BlockTags.EMERALD_ORES)
- //               .forceAddTag(BlockTags.REDSTONE_ORES)
- //               .forceAddTag(BlockTags.DIAMOND_ORES)
- //               .forceAddTag(BlockTags.IRON_ORES)
- //               .forceAddTag(BlockTags.COPPER_ORES)
- //               .forceAddTag(BlockTags.COAL_ORES)
-//                .forceAddTag(BlockTags.LAPIS_ORES);
+
 
         //example for minecraft native tags
         getOrCreateTagBuilder(BlockTags.PICKAXE_MINEABLE)
-   //             .add(ModBlocks.Dex_Ore)
-  //              .add(ModBlocks.Deepslate_Dex_Ore)
-  //              .add(ModBlocks.End_Dex_Ore)
-  //              .add(ModBlocks.Nether_Dex_Ore)
-  //              .add(ModBlocks.Dex_Block)
-  //              .add(ModBlocks.Raw_Dex_Block)
-   //             .add(ModBlocks.DEX_MAP_BLOCK)
-                //delete once dependencies enabled
+
+                //leaving for failed dependencies
                 .add(ModBlocks.BOTANIA_BLOCK)
                 .add(ModBlocks.COBBLEMON_BLOCK)
                 .add(ModBlocks.HEPHAESTUS_BLOCK)
                 .add(ModBlocks.RUNE_BLOCK)
                 .add(ModBlocks.ARCHEO_BLOCK);
 
-  //      getOrCreateTagBuilder(BlockTags.NEEDS_STONE_TOOL)
-  //              .add(ModBlocks.Dex_Block);
-
-   //     getOrCreateTagBuilder(BlockTags.NEEDS_IRON_TOOL)
-   //             .add(ModBlocks.Raw_Dex_Block)
-   //             .add(ModBlocks.Nether_Dex_Ore)
-   //             .add(ModBlocks.Dex_Ore);
-
-   //     getOrCreateTagBuilder(BlockTags.NEEDS_DIAMOND_TOOL)
-   //             .add(ModBlocks.Deepslate_Dex_Ore);
-
-        //example for how to use Fabric native tags
-   //     getOrCreateTagBuilder(TagKey.of(RegistryKeys.BLOCK, new Identifier("fabric", "needs_tool_level_4")))
-   //             .add(ModBlocks.End_Dex_Ore);
     }
 }

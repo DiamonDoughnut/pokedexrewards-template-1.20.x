@@ -1,6 +1,7 @@
 package net.donut.dexrewards;
 
 import net.donut.dexrewards.block.ModBlocks;
+import net.donut.dexrewards.block.entities.ModBlockEntityType;
 import net.donut.dexrewards.item.ModItemGroups;
 import net.donut.dexrewards.item.ModItems;
 import net.donut.dexrewards.util.ModCustomTrades;
@@ -24,6 +25,7 @@ public class DexRewards implements ModInitializer {
 		GeckoLib.initialize();
 		ModCustomTrades.registerCustomTrades();
 		ModVillagers.registerVillagers();
+		ModBlockEntityType.registerBlockEntities();
 
 
 //		FuelRegistry.INSTANCE.add(ModItems.COWPIE, 200);
