@@ -15,6 +15,7 @@ import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.ItemPlacementContext;
 import net.minecraft.item.ItemStack;
+import net.minecraft.nbt.NbtCompound;
 import net.minecraft.sound.SoundCategory;
 import net.minecraft.sound.SoundEvents;
 import net.minecraft.state.StateManager;
@@ -35,34 +36,21 @@ import org.jetbrains.annotations.Nullable;
 
 import java.util.*;
 
+import static org.apache.commons.lang3.ArrayUtils.toArray;
+
 public class DexMapBlock extends Block{
     private static final DirectionProperty FACING = HorizontalFacingBlock.FACING;
     private static final VoxelShape NORTH_WALL = VoxelShapes.cuboid(-16 / 16f, 0, 14 / 16f, 32 / 16f, 28 / 16f, 16 / 16f);
     private static final VoxelShape EAST_WALL = VoxelShapes.cuboid(0f, 0, -16 / 16f, 2 / 16f, 28 / 16f, 32 / 16f);
     private static final VoxelShape SOUTH_WALL = VoxelShapes.cuboid(-16 / 16f, 0, 0, 32 / 16f, 28 / 16f, 2 / 16f);
     private static final VoxelShape WEST_WALL =  VoxelShapes.cuboid(14 / 16f, 0, -16 / 16f, 16 / 16f, 28 / 16f, 32 / 16f);
-    public static BooleanProperty KANTO = BooleanProperty.of("kanto");
-    public static BooleanProperty JOHTO = BooleanProperty.of("johto");
-    public static BooleanProperty HOENN = BooleanProperty.of("hoenn");
-    public static BooleanProperty SINNOH = BooleanProperty.of("sinnoh");
-    public static BooleanProperty UNOVA = BooleanProperty.of("unova");
-    public static BooleanProperty KALOS = BooleanProperty.of("kalos");
-    public static BooleanProperty ALOLA = BooleanProperty.of("alola");
-    public static BooleanProperty GALAR = BooleanProperty.of("galar");
-    public static BooleanProperty PALDEA = BooleanProperty.of("paldea");
-    public static BooleanProperty DEX25 = BooleanProperty.of("dex25");
-    public static BooleanProperty DEX50 = BooleanProperty.of("dex50");
-    public static BooleanProperty DEX75 = BooleanProperty.of("dex75");
-    public static BooleanProperty DEX100 = BooleanProperty.of("dex100");
-    public static BooleanProperty BASE = BooleanProperty.of("base");
+    public Boolean check;
+    public boolean[] nbt= new boolean[13];
 
 
     protected DexMapBlock(Settings settings) {
         super(settings);
-        setDefaultState(getDefaultState().with(DEX25, false).with(DEX50, false)
-                .with(DEX75, false).with(DEX100, false).with(KANTO, false).with(JOHTO, false)
-                .with(HOENN, false).with(SINNOH, false).with(UNOVA, false).with(KALOS, false)
-                .with(ALOLA, false).with(GALAR, false).with(PALDEA, false).with(BASE, true));
+        setDefaultState(getDefaultState().with(FACING, Direction.NORTH));
     }
 
     @Nullable
@@ -84,18 +72,24 @@ public class DexMapBlock extends Block{
             case NORTH -> {
                 return NORTH_WALL;
             }
+
             case EAST -> {
                 return EAST_WALL;
             }
+
             case SOUTH -> {
                 return SOUTH_WALL;
             }
             case WEST -> {
                 return WEST_WALL;
             }
+            default -> {
+                return null;
+            }
         }
-        return null;
+
     }
+
 
     @Override
     public VoxelShape getOutlineShape(BlockState state, BlockView world, BlockPos pos, ShapeContext context) {
@@ -104,71 +98,149 @@ public class DexMapBlock extends Block{
 
     @Override
     public ActionResult onUse(BlockState state, World world, BlockPos pos, PlayerEntity player, Hand hand, BlockHitResult hit) {
+        DexMapBlockEntity map = (DexMapBlockEntity) world.getBlockEntity(pos);
+        NbtCompound nbtCompound;
         ItemStack stack = player.getStackInHand(hand);
-        if(stack.isOf(ModItems.DEXREWARD25) && !state.get(DEX25)) {
-            world.playSound(player, pos, SoundEvents.BLOCK_NOTE_BLOCK_HARP.value(), SoundCategory.BLOCKS, 1f, 1f);
-            world.setBlockState(pos, state.with(DEX25, true));
-        } else if (stack.isOf(ModItems.DEXREWARD50) && !state.get(DEX50)) {
-            world.playSound(player, pos, SoundEvents.BLOCK_AMETHYST_BLOCK_CHIME, SoundCategory.BLOCKS);
-            world.setBlockState(pos, state.with(DEX50, true));
-        } else if (stack.isOf(ModItems.DEXREWARD75) && !state.get(DEX75)) {
-            world.playSound(player, pos, SoundEvents.BLOCK_NOTE_BLOCK_BASEDRUM.value(), SoundCategory.BLOCKS);
-            world.setBlockState(pos, state.with(DEX75, true));
-        } else if (stack.isOf(ModItems.DEXREWARD100) && !state.get(DEX100)) {
-            world.playSound(player, pos, SoundEvents.BLOCK_NOTE_BLOCK_BANJO.value(), SoundCategory.BLOCKS);
-            world.setBlockState(pos, state.with(DEX100, true));
-        } else if (stack.isOf(ModItems.DEXREWARDKANTO) && !state.get(KANTO)) {
-            world.playSound(player, pos, SoundEvents.BLOCK_NOTE_BLOCK_COW_BELL.value(), SoundCategory.BLOCKS);
-            world.setBlockState(pos, state.with(KANTO, true));
-        } else if (stack.isOf(ModItems.DEXREWARDJOHTO) && !state.get(JOHTO)) {
-            world.playSound(player, pos, SoundEvents.BLOCK_NOTE_BLOCK_DIDGERIDOO.value(), SoundCategory.BLOCKS);
-            world.setBlockState(pos, state.with(JOHTO, true));
-        } else if (stack.isOf(ModItems.DEXREWARDHOENN) && !state.get(HOENN)) {
-            world.playSound(player, pos, SoundEvents.BLOCK_NOTE_BLOCK_FLUTE.value(), SoundCategory.BLOCKS);
-            world.setBlockState(pos, state.with(HOENN, true));
-        } else if (stack.isOf(ModItems.DEXREWARDSINNOH) && !state.get(SINNOH)) {
-            world.playSound(player, pos, SoundEvents.BLOCK_NOTE_BLOCK_GUITAR.value(), SoundCategory.BLOCKS);
-            world.setBlockState(pos, state.with(SINNOH, true));
-        } else if (stack.isOf(ModItems.DEXREWARDUNOVA) && !state.get(UNOVA)) {
-            world.playSound(player, pos, SoundEvents.BLOCK_NOTE_BLOCK_HAT.value(), SoundCategory.BLOCKS);
-            world.setBlockState(pos, state.with(UNOVA, true));
-        } else if (stack.isOf(ModItems.DEXREWARDKALOS) && !state.get(KALOS)) {
-            world.playSound(player, pos, SoundEvents.BLOCK_NOTE_BLOCK_PLING.value(), SoundCategory.BLOCKS);
-            world.setBlockState(pos, state.with(KALOS, true));
-        } else if (stack.isOf(ModItems.DEXREWARDALOLA) && !state.get(ALOLA)) {
-            world.playSound(player, pos, SoundEvents.BLOCK_NOTE_BLOCK_BIT.value(), SoundCategory.BLOCKS);
-            world.setBlockState(pos, state.with(ALOLA, true));
-        } else if (stack.isOf(ModItems.DEXREWARDGALAR) && !state.get(GALAR)) {
-            world.playSound(player, pos, SoundEvents.BLOCK_NOTE_BLOCK_SNARE.value(), SoundCategory.BLOCKS);
-            world.setBlockState(pos, state.with(GALAR, true));
-        } else if (stack.isOf(ModItems.DEXREWARDPALDEA) && !state.get(PALDEA)) {
-            world.playSound(player, pos, SoundEvents.BLOCK_NOTE_BLOCK_IRON_XYLOPHONE.value(), SoundCategory.BLOCKS);
-            world.setBlockState(pos, state.with(PALDEA, true));
+        if(map instanceof DexMapBlockEntity) {
+            for(int i = 0; i <= 13; i++){
+                map.nbt.putBoolean(map.tokenNames[i], map.tokenCheck[i]);
+            }
+            if (stack.isOf(ModItems.DEXREWARD25)) {
+                check = map.nbt.getBoolean("dex_25");
+                if (!check) {
+                    map.nbt.putBoolean("dex_25", true);
+                    world.playSound(player, pos, SoundEvents.BLOCK_NOTE_BLOCK_HARP.value(), SoundCategory.BLOCKS, 1f, 1f);
+                    map.markDirty();
+                    return ActionResult.SUCCESS;
+                } else {
+                    return ActionResult.PASS;
+                }
+            } else if (stack.isOf(ModItems.DEXREWARD50)) {
+                check = map.nbt.getBoolean("dex_50");
+                if (!check) {
+                    map.nbt.putBoolean("dex_25", true);
+                    world.playSound(player, pos, SoundEvents.BLOCK_AMETHYST_BLOCK_CHIME, SoundCategory.BLOCKS);
+                    map.markDirty();
+                    return ActionResult.SUCCESS;
+                } else {
+                    return ActionResult.PASS;
+                }
+            } else if (stack.isOf(ModItems.DEXREWARD75)) {
+                check = map.nbt.getBoolean("dex_75");
+                if (!check) {
+                    map.nbt.putBoolean("dex_25", true);
+                    world.playSound(player, pos, SoundEvents.BLOCK_NOTE_BLOCK_BASEDRUM.value(), SoundCategory.BLOCKS);
+                    map.markDirty();
+                    return ActionResult.SUCCESS;
+                } else {
+                    return ActionResult.PASS;
+                }
+            } else if (stack.isOf(ModItems.DEXREWARD100)) {
+                check = map.nbt.getBoolean("dex_100");
+                if (!check) {
+                    map.nbt.putBoolean("dex_25", true);
+                    world.playSound(player, pos, SoundEvents.BLOCK_NOTE_BLOCK_BANJO.value(), SoundCategory.BLOCKS);
+                    map.markDirty();
+                    return ActionResult.SUCCESS;
+                } else {
+                    return ActionResult.PASS;
+                }
+            } else if (stack.isOf(ModItems.DEXREWARDKANTO)) {
+                check = map.nbt.getBoolean("kanto");
+                if (!check) {
+                    map.nbt.putBoolean("dex_25", true);
+                    world.playSound(player, pos, SoundEvents.BLOCK_NOTE_BLOCK_COW_BELL.value(), SoundCategory.BLOCKS);
+                    map.markDirty();
+                    return ActionResult.SUCCESS;
+                } else {
+                    return ActionResult.PASS;
+                }
+            } else if (stack.isOf(ModItems.DEXREWARDJOHTO)) {
+                check = map.nbt.getBoolean("johto");
+                if (!check) {
+                    map.nbt.putBoolean("dex_25", true);
+                    world.playSound(player, pos, SoundEvents.BLOCK_NOTE_BLOCK_DIDGERIDOO.value(), SoundCategory.BLOCKS);
+                    map.markDirty();
+                    return ActionResult.SUCCESS;
+                } else {
+                    return ActionResult.PASS;
+                }
+            } else if (stack.isOf(ModItems.DEXREWARDHOENN)) {
+                check = map.nbt.getBoolean("hoenn");
+                if (!check) {
+                    map.nbt.putBoolean("dex_25", true);
+                    world.playSound(player, pos, SoundEvents.BLOCK_NOTE_BLOCK_FLUTE.value(), SoundCategory.BLOCKS);
+                    map.markDirty();
+                    return ActionResult.SUCCESS;
+                } else {
+                    return ActionResult.PASS;
+                }
+            } else if (stack.isOf(ModItems.DEXREWARDSINNOH)) {
+                check = map.nbt.getBoolean("sinnoh");
+                if (!check) {
+                    map.nbt.putBoolean("dex_25", true);
+                    world.playSound(player, pos, SoundEvents.BLOCK_NOTE_BLOCK_GUITAR.value(), SoundCategory.BLOCKS);
+                    map.markDirty();
+                    return ActionResult.SUCCESS;
+                } else {
+                    return ActionResult.PASS;
+                }
+            } else if (stack.isOf(ModItems.DEXREWARDUNOVA)) {
+                check = map.nbt.getBoolean("unova");
+                if (!check) {
+                    map.nbt.putBoolean("dex_25", true);
+                    world.playSound(player, pos, SoundEvents.BLOCK_NOTE_BLOCK_HAT.value(), SoundCategory.BLOCKS);
+                    map.markDirty();
+                    return ActionResult.SUCCESS;
+                } else {
+                    return ActionResult.PASS;
+                }
+            } else if (stack.isOf(ModItems.DEXREWARDKALOS)) {
+                check = map.nbt.getBoolean("kalos");
+                if (!check) {
+                    map.nbt.putBoolean("dex_25", true);
+                    world.playSound(player, pos, SoundEvents.BLOCK_NOTE_BLOCK_PLING.value(), SoundCategory.BLOCKS);
+                    map.markDirty();
+                    return ActionResult.SUCCESS;
+                } else {
+                    return ActionResult.PASS;
+                }
+            } else if (stack.isOf(ModItems.DEXREWARDALOLA)) {
+                check = map.nbt.getBoolean("alola");
+                if (!check) {
+                    map.nbt.putBoolean("dex_25", true);
+                    world.playSound(player, pos, SoundEvents.BLOCK_NOTE_BLOCK_BIT.value(), SoundCategory.BLOCKS);
+                    map.markDirty();
+                    return ActionResult.SUCCESS;
+                } else {
+                    return ActionResult.PASS;
+                }
+            } else if (stack.isOf(ModItems.DEXREWARDGALAR)) {
+                check = map.nbt.getBoolean("galar");
+                if (!check) {
+                    map.nbt.putBoolean("dex_25", true);
+                    world.playSound(player, pos, SoundEvents.BLOCK_NOTE_BLOCK_SNARE.value(), SoundCategory.BLOCKS);
+                    map.markDirty();
+                    return ActionResult.SUCCESS;
+                } else {
+                    return ActionResult.PASS;
+                }
+            } else if (stack.isOf(ModItems.DEXREWARDPALDEA)) {
+                check = map.nbt.getBoolean("paldea");
+                if (!check) {
+                    map.nbt.putBoolean("dex_25", true);
+                    world.playSound(player, pos, SoundEvents.BLOCK_NOTE_BLOCK_IRON_XYLOPHONE.value(), SoundCategory.BLOCKS);
+                    map.markDirty();
+                    return ActionResult.SUCCESS;
+                } else {
+                    map.markDirty();
+                    return ActionResult.PASS;
+                }
+            }
         }
-
-        return ActionResult.SUCCESS;
+        return ActionResult.PASS;
 
     }
-
-    public List<Boolean> getRenderState(BlockState state) {
-        List<Boolean> checks = new ArrayList<>(List.of(false, false, false, false, false, false, false, false, false, false, false, false, false));
-        List<Property> key= List.of(DEX25, DEX50, DEX75, DEX100, KANTO, JOHTO, HOENN, SINNOH, UNOVA, KALOS, ALOLA, GALAR, PALDEA);
-        for(int i = 0; i <= 13; i++){
-            if((boolean) state.get(key.get(i))) checks.set(i, true);
-            else checks.set(i, false);
-        }
-        return checks;
-    }
-
-
-    @Override
-    public BlockRenderType getRenderType(BlockState state) {
-        return BlockRenderType.MODEL;
-    }
-
-
-    private static final Map<String, ResourceIndex> LAYERED_LOCATION_CACHE = new HashMap<>();
-    private final String[] DexMapOverlayArray = new String[13];
 
     //the below is serviceable, but use the Custom Items class version to ensure tooltip translates with everything else
     @Override
@@ -180,20 +252,7 @@ public class DexMapBlock extends Block{
     @Override
     protected void appendProperties(StateManager.Builder<Block, BlockState> builder) {
         builder.add(HorizontalFacingBlock.FACING);
-        builder.add(DEX25);
-        builder.add(DEX50);
-        builder.add(DEX75);
-        builder.add(DEX100);
-        builder.add(KANTO);
-        builder.add(JOHTO);
-        builder.add(HOENN);
-        builder.add(SINNOH);
-        builder.add(UNOVA);
-        builder.add(KALOS);
-        builder.add(ALOLA);
-        builder.add(GALAR);
-        builder.add(PALDEA);
-        builder.add(BASE);
+
     }
 
 

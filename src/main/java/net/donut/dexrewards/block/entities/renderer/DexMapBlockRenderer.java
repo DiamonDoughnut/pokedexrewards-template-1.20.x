@@ -9,6 +9,7 @@ import net.minecraft.client.render.*;
 import net.minecraft.client.render.block.entity.BlockEntityRenderer;
 import net.minecraft.client.render.block.entity.BlockEntityRendererFactory;
 import net.minecraft.client.util.math.MatrixStack;
+import net.minecraft.nbt.NbtCompound;
 import net.minecraft.state.property.Property;
 import net.minecraft.util.Identifier;
 import net.minecraft.util.math.BlockPos;
@@ -29,10 +30,12 @@ public class DexMapBlockRenderer implements BlockEntityRenderer<DexMapBlockEntit
 
     }
 
+
     @Override
     public void render(DexMapBlockEntity entity, float tickDelta, MatrixStack matrices,
                        VertexConsumerProvider vertexConsumers, int light, int overlay) {
-
+        DexMapBlockEntity map = (DexMapBlockEntity) entity;
+        NbtCompound nbt = map.nbt;
 
         List<String> pathlist = List.of("dex25_ribbon", "dex50_ribbon", "dex75_ribbon", "dex100_ribbon",
                 "kanto_stamp", "johto_stamp", "hoenn_stamp", "sinnoh_stamp", "unova_stamp", "kalos_stamp",
@@ -44,9 +47,8 @@ public class DexMapBlockRenderer implements BlockEntityRenderer<DexMapBlockEntit
 
         if (bl){l = 0L;for(int i = 0; i <= 12; i++){states.set(i, false);}}
         else {
-            l = entity.getWorld().getTime();
-            BlockState state = entity.getCachedState();
-            states = entity.getRenderState(state);
+            l = map.getWorld().getTime();
+            states = entity.getRenderState(nbt);
         }
         matrices.push();
 
@@ -58,6 +60,7 @@ public class DexMapBlockRenderer implements BlockEntityRenderer<DexMapBlockEntit
 
         for(int i = 0; i <=12; i++){
             String path = pathlist.get(i);
+
             boolean state = states.get(i);
             if(state){
                 buffer.begin(VertexFormat.DrawMode.QUADS, VertexFormats.POSITION_TEXTURE);
