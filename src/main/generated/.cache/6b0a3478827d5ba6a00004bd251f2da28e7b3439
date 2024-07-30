@@ -1,6 +1,6 @@
-// 1.20.1	2024-07-29T06:04:54.175045	PokedexRewards/Block Loot Tables
+// 1.20.1	2024-07-30T04:14:40.7860397	PokedexRewards/Block Loot Tables
+ce0ef0bdaedf80d0b6ebf1dbd57615c87307f07c data\dexrewards\loot_tables\blocks\dex_map_block.json
 dca6d1247b7de5d9031b93f435827735aa90a645 data\dexrewards\loot_tables\blocks\archeo_block.json
-ce0ef0bdaedf80d0b6ebf1dbd57615c87307f07c data\minecraft\loot_tables\blocks\white_banner.json
 1be87fe4acbe4920231792099bd9fe7495c72287 data\dexrewards\loot_tables\blocks\cobblemon_block.json
 939de5cafe44f8e09d3cd45e4ff22291b6f9e09a data\dexrewards\loot_tables\blocks\hephaestus_block.json
 57c4d325fd51ddb4f4924cc85955c348b32879e7 data\dexrewards\loot_tables\blocks\rune_block.json

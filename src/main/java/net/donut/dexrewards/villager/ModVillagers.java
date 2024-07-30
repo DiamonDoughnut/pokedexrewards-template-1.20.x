@@ -48,7 +48,7 @@ public class ModVillagers {
     public static Optional<Block> cobblemonBlock = null;
     public static Block modVillagersCobblemon(){
         if(checkModPresence("cobblemon", "poke_ball")){
-            cobblemonBlock = Registries.BLOCK.stream().filter(block -> Identifier.of("cobblemon", "pasture").equals(Registries.BLOCK.getId(block))).findFirst();
+            cobblemonBlock = Registries.BLOCK.stream().filter(block -> Identifier.of("cobblemon", "display_case").equals(Registries.BLOCK.getId(block))).findFirst();
             return cobblemonBlock.get();
         }
         else {
