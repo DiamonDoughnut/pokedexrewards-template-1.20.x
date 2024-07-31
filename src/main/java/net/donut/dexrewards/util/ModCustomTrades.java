@@ -67,10 +67,11 @@ public class ModCustomTrades {
 
         //Import block and items for Botania trades
         Optional<Item> externalItem;
+        Item modItem;
+        Item modItem2;
         externalItem = Registries.ITEM.stream().filter(
                 item -> Registries.ITEM.getId(item).equals(Identifier.of("botania", "rune_wrath"))
         ).findFirst();
-        Item modItem;
         modItem = externalItem.map(Objects::requireNonNull).orElse(ModItems.ROCK);
         TradeOfferHelper.registerVillagerOffers(ModVillagers.BOTANIA_VILLAGER, 1, factories -> {
             factories.add((entity, random) -> new TradeOffer(

@@ -38,7 +38,7 @@ import java.util.*;
 
 import static org.apache.commons.lang3.ArrayUtils.toArray;
 
-public class DexMapBlock extends Block{
+public class DexMapBlock extends BlockWithEntity{
     private static final DirectionProperty FACING = HorizontalFacingBlock.FACING;
     private static final VoxelShape NORTH_WALL = VoxelShapes.cuboid(-16 / 16f, 0, 14 / 16f, 32 / 16f, 28 / 16f, 16 / 16f);
     private static final VoxelShape EAST_WALL = VoxelShapes.cuboid(0f, 0, -16 / 16f, 2 / 16f, 28 / 16f, 32 / 16f);
@@ -48,7 +48,7 @@ public class DexMapBlock extends Block{
     public boolean[] nbt= new boolean[13];
 
 
-    protected DexMapBlock(Settings settings) {
+    public DexMapBlock(Settings settings) {
         super(settings);
         setDefaultState(getDefaultState().with(FACING, Direction.NORTH));
     }

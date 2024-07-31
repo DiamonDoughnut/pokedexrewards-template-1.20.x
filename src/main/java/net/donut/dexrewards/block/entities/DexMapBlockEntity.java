@@ -41,7 +41,7 @@ public class DexMapBlockEntity extends BlockEntity implements Nameable {
                 nbt.putBoolean(tokenNames[t], tokenCheck[t]);
             }
         }
-        List<Boolean> checks = List.of();
+        List<Boolean> checks = List.of(true, false, false, false, false, false, false, false, false, false, false, false, false, false);
         for(int i = 0; i <=13; i++){
             checks.set(i, nbt.getBoolean(tokenNames[i]));
         }
@@ -103,9 +103,4 @@ public class DexMapBlockEntity extends BlockEntity implements Nameable {
 
     }
 
-
-
-    public BlockEntity createBlockEntity(BlockPos pos, BlockState state) {
-        return null;
-    }
 }

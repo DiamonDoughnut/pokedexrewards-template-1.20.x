@@ -1,5 +1,6 @@
 package net.donut.dexrewards.villager;
 
+import com.eliotlash.mclib.math.functions.classic.Mod;
 import com.google.common.collect.ImmutableSet;
 import net.donut.dexrewards.DexRewards;
 import net.donut.dexrewards.block.ModBlocks;
@@ -15,6 +16,7 @@ import net.minecraft.util.Identifier;
 import net.minecraft.village.VillagerProfession;
 import net.minecraft.world.poi.PointOfInterestType;
 
+import java.util.Objects;
 import java.util.Optional;
 
 public class ModVillagers {
@@ -30,8 +32,8 @@ public class ModVillagers {
     public static Optional<Block> botaniaBlock = null;
     public static Block modVillagersBotania(){
         if(checkModPresence("botania", "dreamwood_wand")){
-            botaniaBlock = Registries.BLOCK.stream().filter(block -> Identifier.of("botania", "apothecary_default").equals(Registries.BLOCK.getId(block))).findFirst();
-            return botaniaBlock.get();
+            botaniaBlock = Registries.BLOCK.stream().filter(block -> Objects.equals(Identifier.of("botania", "apothecary_default"), Registries.BLOCK.getId(block))).findFirst();
+            return botaniaBlock.orElse(ModBlocks.BOTANIA_BLOCK);
         }
         else {
             return ModBlocks.BOTANIA_BLOCK;
@@ -48,8 +50,8 @@ public class ModVillagers {
     public static Optional<Block> cobblemonBlock = null;
     public static Block modVillagersCobblemon(){
         if(checkModPresence("cobblemon", "poke_ball")){
-            cobblemonBlock = Registries.BLOCK.stream().filter(block -> Identifier.of("cobblemon", "display_case").equals(Registries.BLOCK.getId(block))).findFirst();
-            return cobblemonBlock.get();
+            cobblemonBlock = Registries.BLOCK.stream().filter(block -> Objects.equals(Identifier.of("cobblemon", "display_case"), Registries.BLOCK.getId(block))).findFirst();
+            return cobblemonBlock.orElse(ModBlocks.COBBLEMON_BLOCK);
         }
         else {
             return ModBlocks.COBBLEMON_BLOCK;
@@ -58,14 +60,28 @@ public class ModVillagers {
     public static final RegistryKey<PointOfInterestType> COBBLEMON_POI_KEY = poiKey("cobblemonpoi");
     public static final PointOfInterestType COBBLEMON_SOUND_POI = registerPoi("cobblemonpoi", modVillagersCobblemon());
     public static final VillagerProfession COBBLEMON_VILLAGER = registerProfession("cobblemon_villager", COBBLEMON_POI_KEY);
+    public static String cobblemonName1 = "cobblemonpoi1";
+    public static Optional<Block> cobblemonBlock1 = null;
+    public static Block modVillagersCobblemon1(){
+        if(checkModPresence("cobblemon", "poke_ball")){
+            cobblemonBlock1 = Registries.BLOCK.stream().filter(block -> Objects.equals(Identifier.of("cobblemon", "display_case"), Registries.BLOCK.getId(block))).findFirst();
+            return cobblemonBlock1.orElse(ModBlocks.COBBLEMON_BLOCK1);
+        }
+        else {
+            return ModBlocks.COBBLEMON_BLOCK1;
+        }
+    }
+    public static final RegistryKey<PointOfInterestType> COBBLEMON_POI_KEY1 = poiKey("cobblemonpoi1");
+    public static final PointOfInterestType COBBLEMON_SOUND_POI1 = registerPoi("cobblemonpoi1", modVillagersCobblemon1());
+    public static final VillagerProfession COBBLEMON_VILLAGER1 = registerProfession("cobblemon_villager1", COBBLEMON_POI_KEY1);
 
     //soft dependency: hephaestus
     public static String hephaestusName = "hephaestuspoi";
     public static Optional<Block> hephaestusBlock = null;
     public static Block modVillagersHephaestus(){
         if(checkModPresence("tconstruct", "seared_brick")){
-            hephaestusBlock = Registries.BLOCK.stream().filter(block -> Identifier.of("tconstruct", "seared_melter").equals(Registries.BLOCK.getId(block))).findFirst();
-            return hephaestusBlock.get();
+            hephaestusBlock = Registries.BLOCK.stream().filter(block -> Objects.equals(Identifier.of("tconstruct", "seared_melter"), Registries.BLOCK.getId(block))).findFirst();
+            return hephaestusBlock.orElse(ModBlocks.HEPHAESTUS_BLOCK);
         }
         else {
             return ModBlocks.HEPHAESTUS_BLOCK;
@@ -80,8 +96,8 @@ public class ModVillagers {
     public static Optional<Block> runeBlock = null;
     public static Block modVillagersRunicEnchanting(){
         if(checkModPresence("runic_enchanting", "rune_chalk")){
-            runeBlock = Registries.BLOCK.stream().filter(block -> Identifier.of("runic_enchanting", "rune_enchanting_table").equals(Registries.BLOCK.getId(block))).findFirst();
-            return runeBlock.get();
+            runeBlock = Registries.BLOCK.stream().filter(block -> Objects.equals(Identifier.of("runic_enchanting", "rune_enchanting_table"), Registries.BLOCK.getId(block))).findFirst();
+            return runeBlock.orElse(ModBlocks.RUNE_BLOCK);
         }
         else {
             return ModBlocks.RUNE_BLOCK;
@@ -96,18 +112,19 @@ public class ModVillagers {
     public static Optional<Block> archaeologyBlock = null;
     public static Block modVillagersArchaeologyComplex(){
         if(checkModPresence("betterarcheology", "iron_brush")){
-            archaeologyBlock = Registries.BLOCK.stream().filter(block -> Identifier.of("betterarcheology", "archeology_table").equals(Registries.BLOCK.getId(block))).findFirst();
-            return archaeologyBlock.get();
+            archaeologyBlock = Registries.BLOCK.stream().filter(block -> Objects.equals(Identifier.of("betterarcheology", "archeology_table"), Registries.BLOCK.getId(block))).findFirst();
+            return archaeologyBlock.orElse(ModBlocks.ARCHEO_BLOCK);
         }
         else {
             return ModBlocks.ARCHEO_BLOCK;
         }
-    }    public static final RegistryKey<PointOfInterestType> ARCHEO_POI_KEY = poiKey("archaeopoi");
+    }
+    public static final RegistryKey<PointOfInterestType> ARCHEO_POI_KEY = poiKey("archaeopoi");
     public static final PointOfInterestType ARCHEO_SOUND_POI = registerPoi("archaeopoi", modVillagersArchaeologyComplex());
     public static final VillagerProfession ARCHEO_VILLAGER = registerProfession("archeo_villager", ARCHEO_POI_KEY);
 
     public static boolean checkModPresence(String namespace, String key){
-        Optional<Item> modItemFinal = Registries.ITEM.stream().filter(item -> Identifier.of(namespace, key).equals(Registries.ITEM.getId(item))).findFirst();
+        Optional<Item> modItemFinal = Registries.ITEM.stream().filter(item -> Objects.equals(Identifier.of(namespace, key), Registries.ITEM.getId(item))).findFirst();
         return modItemFinal.isPresent();
     }
 

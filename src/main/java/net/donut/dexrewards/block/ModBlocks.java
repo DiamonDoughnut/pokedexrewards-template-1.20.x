@@ -29,10 +29,11 @@ public class ModBlocks {
     //comment out once mod dependencies added and new job block chosen
     public static final Block BOTANIA_BLOCK = registerBlock("botania_block", new Block(FabricBlockSettings.copyOf(Blocks.FLETCHING_TABLE)));
     public static final Block COBBLEMON_BLOCK = registerBlock("cobblemon_block", new Block(FabricBlockSettings.copyOf(Blocks.FLETCHING_TABLE)));
+    public static final Block COBBLEMON_BLOCK1 = registerBlock("cobblemon_block1", new Block(FabricBlockSettings.copyOf(Blocks.FLETCHING_TABLE)));
     public static final Block HEPHAESTUS_BLOCK = registerBlock("hephaestus_block", new Block(FabricBlockSettings.copyOf(Blocks.FLETCHING_TABLE)));
     public static final Block RUNE_BLOCK = registerBlock("rune_block", new Block(FabricBlockSettings.copyOf(Blocks.FLETCHING_TABLE)));
     public static final Block ARCHEO_BLOCK = registerBlock("archeo_block", new Block(FabricBlockSettings.copyOf(Blocks.FLETCHING_TABLE)));
-    public static final Block DEX_MAP_BLOCK = registerBlock("dex_map_block", new DexMapBlock(FabricBlockSettings.copyOf(Blocks.IRON_BLOCK)){});
+    public static final Block DEX_MAP_BLOCK = registerBlock("dex_map_block", new DexMapBlock(FabricBlockSettings.copyOf(Blocks.IRON_BLOCK)));
 //    public static final Block Dex_Ore = registerBlock("dex_ore", new ExperienceDroppingBlock(FabricBlockSettings.copyOf(Blocks.STONE).strength(2f), UniformIntProvider.create(2,5)));
 //    public static final Block Deepslate_Dex_Ore = registerBlock("deepslate_dex_ore", new ExperienceDroppingBlock(FabricBlockSettings.copyOf(Blocks.DEEPSLATE).strength(4f), UniformIntProvider.create(2,5)));
 //    public static final Block Nether_Dex_Ore = registerBlock("nether_dex_ore", new ExperienceDroppingBlock(FabricBlockSettings.copyOf(Blocks.NETHERRACK).strength(1.5f), UniformIntProvider.create(2,5)));

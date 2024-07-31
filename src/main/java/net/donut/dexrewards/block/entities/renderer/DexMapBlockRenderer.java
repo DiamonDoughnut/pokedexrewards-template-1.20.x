@@ -45,10 +45,11 @@ public class DexMapBlockRenderer implements BlockEntityRenderer<DexMapBlockEntit
         long l;
         List<Boolean> states = List.of();
 
-        if (bl){l = 0L;for(int i = 0; i <= 12; i++){states.set(i, false);}}
+        if (bl){l = 0L;for(int i = 0; i <= 13; i++){states.set(i, false);}}
         else {
-            l = map.getWorld().getTime();
             states = entity.getRenderState(nbt);
+
+            l = map.getWorld().getTime();
         }
         matrices.push();
 
