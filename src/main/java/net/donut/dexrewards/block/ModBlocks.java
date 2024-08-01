@@ -9,6 +9,7 @@ import net.fabricmc.fabric.api.object.builder.v1.block.entity.FabricBlockEntityT
 import net.minecraft.block.*;
 import net.minecraft.block.entity.BlockEntity;
 import net.minecraft.block.entity.BlockEntityType;
+import net.minecraft.client.render.RenderLayers;
 import net.minecraft.item.BlockItem;
 import net.minecraft.item.Item;
 import net.minecraft.registry.Registries;
@@ -42,7 +43,6 @@ public class ModBlocks {
         registerBlockItem(name, block);
         return Registry.register(Registries.BLOCK, new Identifier(DexRewards.MOD_ID, name), block);
     }
-
 
 
     public static Item registerBlockItem(String name, Block block) {

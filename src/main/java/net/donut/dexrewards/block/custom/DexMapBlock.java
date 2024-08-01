@@ -1,16 +1,10 @@
 package net.donut.dexrewards.block.custom;
 
-import net.donut.dexrewards.DexRewards;
-import net.donut.dexrewards.block.entities.DexMapBlockEntity;
+import net.donut.dexrewards.block.entity.DexMapBlockEntity;
 import net.donut.dexrewards.item.ModItems;
-import net.fabricmc.fabric.impl.blockrenderlayer.BlockRenderLayerMapImpl;
-import net.fabricmc.fabric.mixin.blockrenderlayer.RenderLayersMixin;
 import net.minecraft.block.*;
 import net.minecraft.block.entity.BlockEntity;
 import net.minecraft.client.item.TooltipContext;
-import net.minecraft.client.render.RenderLayers;
-import net.minecraft.client.render.TexturedRenderLayers;
-import net.minecraft.client.resource.ResourceIndex;
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.ItemPlacementContext;
@@ -19,9 +13,7 @@ import net.minecraft.nbt.NbtCompound;
 import net.minecraft.sound.SoundCategory;
 import net.minecraft.sound.SoundEvents;
 import net.minecraft.state.StateManager;
-import net.minecraft.state.property.BooleanProperty;
 import net.minecraft.state.property.DirectionProperty;
-import net.minecraft.state.property.Property;
 import net.minecraft.text.Text;
 import net.minecraft.util.ActionResult;
 import net.minecraft.util.Hand;
@@ -36,8 +28,6 @@ import org.jetbrains.annotations.Nullable;
 
 import java.util.*;
 
-import static org.apache.commons.lang3.ArrayUtils.toArray;
-
 public class DexMapBlock extends BlockWithEntity{
     private static final DirectionProperty FACING = HorizontalFacingBlock.FACING;
     private static final VoxelShape NORTH_WALL = VoxelShapes.cuboid(-16 / 16f, 0, 14 / 16f, 32 / 16f, 28 / 16f, 16 / 16f);
@@ -46,6 +36,7 @@ public class DexMapBlock extends BlockWithEntity{
     private static final VoxelShape WEST_WALL =  VoxelShapes.cuboid(14 / 16f, 0, -16 / 16f, 16 / 16f, 28 / 16f, 32 / 16f);
     public Boolean check;
     public boolean[] nbt= new boolean[13];
+    public String[] key = new String[13];
 
 
     public DexMapBlock(Settings settings) {
@@ -101,145 +92,132 @@ public class DexMapBlock extends BlockWithEntity{
         DexMapBlockEntity map = (DexMapBlockEntity) world.getBlockEntity(pos);
         NbtCompound nbtCompound;
         ItemStack stack = player.getStackInHand(hand);
-        if(map instanceof DexMapBlockEntity) {
-            for(int i = 0; i <= 13; i++){
-                map.nbt.putBoolean(map.tokenNames[i], map.tokenCheck[i]);
-            }
+        if (map instanceof DexMapBlockEntity) {
             if (stack.isOf(ModItems.DEXREWARD25)) {
-                check = map.nbt.getBoolean("dex_25");
+                check = DexMapBlockEntity.tokenMutable.get(1);
                 if (!check) {
-                    map.nbt.putBoolean("dex_25", true);
+                    DexMapBlockEntity.tokenMutable.set(1, true);
+                    stack.damage(1, player, player1 -> player1.sendToolBreakStatus(hand));
                     world.playSound(player, pos, SoundEvents.BLOCK_NOTE_BLOCK_HARP.value(), SoundCategory.BLOCKS, 1f, 1f);
                     map.markDirty();
                     return ActionResult.SUCCESS;
-                } else {
-                    return ActionResult.PASS;
                 }
             } else if (stack.isOf(ModItems.DEXREWARD50)) {
-                check = map.nbt.getBoolean("dex_50");
+                check = DexMapBlockEntity.tokenMutable.get(2);
                 if (!check) {
-                    map.nbt.putBoolean("dex_25", true);
+                    DexMapBlockEntity.tokenMutable.set(2, true);
+                    stack.damage(1, player, player1 -> player1.sendToolBreakStatus(hand));
                     world.playSound(player, pos, SoundEvents.BLOCK_AMETHYST_BLOCK_CHIME, SoundCategory.BLOCKS);
                     map.markDirty();
                     return ActionResult.SUCCESS;
-                } else {
-                    return ActionResult.PASS;
                 }
             } else if (stack.isOf(ModItems.DEXREWARD75)) {
-                check = map.nbt.getBoolean("dex_75");
+                check = DexMapBlockEntity.tokenMutable.get(3);
                 if (!check) {
-                    map.nbt.putBoolean("dex_25", true);
+                    DexMapBlockEntity.tokenMutable.set(3, true);
+                    stack.damage(1, player, player1 -> player1.sendToolBreakStatus(hand));
                     world.playSound(player, pos, SoundEvents.BLOCK_NOTE_BLOCK_BASEDRUM.value(), SoundCategory.BLOCKS);
                     map.markDirty();
                     return ActionResult.SUCCESS;
-                } else {
-                    return ActionResult.PASS;
                 }
             } else if (stack.isOf(ModItems.DEXREWARD100)) {
-                check = map.nbt.getBoolean("dex_100");
+                check = DexMapBlockEntity.tokenMutable.get(4);
                 if (!check) {
-                    map.nbt.putBoolean("dex_25", true);
+                    DexMapBlockEntity.tokenMutable.set(4, true);
+                    stack.damage(1, player, player1 -> player1.sendToolBreakStatus(hand));
                     world.playSound(player, pos, SoundEvents.BLOCK_NOTE_BLOCK_BANJO.value(), SoundCategory.BLOCKS);
                     map.markDirty();
                     return ActionResult.SUCCESS;
-                } else {
-                    return ActionResult.PASS;
                 }
             } else if (stack.isOf(ModItems.DEXREWARDKANTO)) {
-                check = map.nbt.getBoolean("kanto");
+                check = DexMapBlockEntity.tokenMutable.get(5);
                 if (!check) {
-                    map.nbt.putBoolean("dex_25", true);
+                    DexMapBlockEntity.tokenMutable.set(5, true);
+                    stack.damage(1, player, player1 -> player1.sendToolBreakStatus(hand));
                     world.playSound(player, pos, SoundEvents.BLOCK_NOTE_BLOCK_COW_BELL.value(), SoundCategory.BLOCKS);
                     map.markDirty();
                     return ActionResult.SUCCESS;
-                } else {
-                    return ActionResult.PASS;
                 }
             } else if (stack.isOf(ModItems.DEXREWARDJOHTO)) {
-                check = map.nbt.getBoolean("johto");
+                check = DexMapBlockEntity.tokenMutable.get(6);
                 if (!check) {
-                    map.nbt.putBoolean("dex_25", true);
+                    DexMapBlockEntity.tokenMutable.set(6, true);
+                    stack.damage(1, player, player1 -> player1.sendToolBreakStatus(hand));
                     world.playSound(player, pos, SoundEvents.BLOCK_NOTE_BLOCK_DIDGERIDOO.value(), SoundCategory.BLOCKS);
                     map.markDirty();
                     return ActionResult.SUCCESS;
-                } else {
-                    return ActionResult.PASS;
                 }
             } else if (stack.isOf(ModItems.DEXREWARDHOENN)) {
-                check = map.nbt.getBoolean("hoenn");
+                check = DexMapBlockEntity.tokenMutable.get(7);
                 if (!check) {
-                    map.nbt.putBoolean("dex_25", true);
+                    DexMapBlockEntity.tokenMutable.set(7, true);
+                    stack.damage(1, player, player1 -> player1.sendToolBreakStatus(hand));
                     world.playSound(player, pos, SoundEvents.BLOCK_NOTE_BLOCK_FLUTE.value(), SoundCategory.BLOCKS);
                     map.markDirty();
                     return ActionResult.SUCCESS;
-                } else {
-                    return ActionResult.PASS;
                 }
             } else if (stack.isOf(ModItems.DEXREWARDSINNOH)) {
-                check = map.nbt.getBoolean("sinnoh");
+                check = DexMapBlockEntity.tokenMutable.get(8);
                 if (!check) {
-                    map.nbt.putBoolean("dex_25", true);
+                    DexMapBlockEntity.tokenMutable.set(8, true);
+                    stack.damage(1, player, player1 -> player1.sendToolBreakStatus(hand));
                     world.playSound(player, pos, SoundEvents.BLOCK_NOTE_BLOCK_GUITAR.value(), SoundCategory.BLOCKS);
                     map.markDirty();
                     return ActionResult.SUCCESS;
-                } else {
-                    return ActionResult.PASS;
                 }
             } else if (stack.isOf(ModItems.DEXREWARDUNOVA)) {
-                check = map.nbt.getBoolean("unova");
+                check = DexMapBlockEntity.tokenMutable.get(9);
                 if (!check) {
-                    map.nbt.putBoolean("dex_25", true);
+                    DexMapBlockEntity.tokenMutable.set(9, true);
+                    stack.damage(1, player, player1 -> player1.sendToolBreakStatus(hand));
                     world.playSound(player, pos, SoundEvents.BLOCK_NOTE_BLOCK_HAT.value(), SoundCategory.BLOCKS);
                     map.markDirty();
                     return ActionResult.SUCCESS;
-                } else {
-                    return ActionResult.PASS;
                 }
             } else if (stack.isOf(ModItems.DEXREWARDKALOS)) {
-                check = map.nbt.getBoolean("kalos");
+                check = DexMapBlockEntity.tokenMutable.get(10);
                 if (!check) {
-                    map.nbt.putBoolean("dex_25", true);
+                    DexMapBlockEntity.tokenMutable.set(1, true);
+                    stack.damage(10, player, player1 -> player1.sendToolBreakStatus(hand));
                     world.playSound(player, pos, SoundEvents.BLOCK_NOTE_BLOCK_PLING.value(), SoundCategory.BLOCKS);
                     map.markDirty();
                     return ActionResult.SUCCESS;
-                } else {
-                    return ActionResult.PASS;
                 }
             } else if (stack.isOf(ModItems.DEXREWARDALOLA)) {
-                check = map.nbt.getBoolean("alola");
+                check = DexMapBlockEntity.tokenMutable.get(11);
                 if (!check) {
-                    map.nbt.putBoolean("dex_25", true);
+                    DexMapBlockEntity.tokenMutable.set(11, true);
+                    stack.damage(1, player, player1 -> player1.sendToolBreakStatus(hand));
                     world.playSound(player, pos, SoundEvents.BLOCK_NOTE_BLOCK_BIT.value(), SoundCategory.BLOCKS);
                     map.markDirty();
                     return ActionResult.SUCCESS;
-                } else {
-                    return ActionResult.PASS;
                 }
             } else if (stack.isOf(ModItems.DEXREWARDGALAR)) {
-                check = map.nbt.getBoolean("galar");
+                check = DexMapBlockEntity.tokenMutable.get(12);
                 if (!check) {
-                    map.nbt.putBoolean("dex_25", true);
+                    DexMapBlockEntity.tokenMutable.set(12, true);
+                    stack.damage(1, player, player1 -> player1.sendToolBreakStatus(hand));
                     world.playSound(player, pos, SoundEvents.BLOCK_NOTE_BLOCK_SNARE.value(), SoundCategory.BLOCKS);
                     map.markDirty();
                     return ActionResult.SUCCESS;
-                } else {
-                    return ActionResult.PASS;
                 }
             } else if (stack.isOf(ModItems.DEXREWARDPALDEA)) {
-                check = map.nbt.getBoolean("paldea");
+                check = DexMapBlockEntity.tokenMutable.get(13);
                 if (!check) {
-                    map.nbt.putBoolean("dex_25", true);
+                    DexMapBlockEntity.tokenMutable.set(13, true);
+                    stack.damage(1, player, player1 -> player1.sendToolBreakStatus(hand));
                     world.playSound(player, pos, SoundEvents.BLOCK_NOTE_BLOCK_IRON_XYLOPHONE.value(), SoundCategory.BLOCKS);
                     map.markDirty();
                     return ActionResult.SUCCESS;
-                } else {
-                    map.markDirty();
-                    return ActionResult.PASS;
                 }
             }
         }
         return ActionResult.PASS;
+    }
 
+    @Override
+    public BlockRenderType getRenderType(BlockState state) {
+        return BlockRenderType.MODEL;
     }
 
     //the below is serviceable, but use the Custom Items class version to ensure tooltip translates with everything else
