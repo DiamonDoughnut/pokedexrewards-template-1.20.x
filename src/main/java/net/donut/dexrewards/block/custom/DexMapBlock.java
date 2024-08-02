@@ -31,14 +31,13 @@ import org.jetbrains.annotations.Nullable;
 
 import java.util.*;
 
-public class DexMapBlock extends BlockWithEntity implements BlockEntityProvider, ImplementedInventory {
+public class DexMapBlock extends BlockWithEntity implements BlockEntityProvider {
     private static final DirectionProperty FACING = HorizontalFacingBlock.FACING;
-    private static final VoxelShape NORTH_WALL = VoxelShapes.cuboid(-16 / 16f, 0, 14 / 16f, 32 / 16f, 28 / 16f, 16 / 16f);
-    private static final VoxelShape EAST_WALL = VoxelShapes.cuboid(0f, 0, -16 / 16f, 2 / 16f, 28 / 16f, 32 / 16f);
-    private static final VoxelShape SOUTH_WALL = VoxelShapes.cuboid(-16 / 16f, 0, 0, 32 / 16f, 28 / 16f, 2 / 16f);
-    private static final VoxelShape WEST_WALL =  VoxelShapes.cuboid(14 / 16f, 0, -16 / 16f, 16 / 16f, 28 / 16f, 32 / 16f);
+    private static final VoxelShape NORTH_WALL = VoxelShapes.cuboid(-1f, 0, 0.875f, 2f, 1.75f, 1f);
+    private static final VoxelShape EAST_WALL = VoxelShapes.cuboid(0f, 0, -1f, 0.125f, 1.75f, 2f);
+    private static final VoxelShape SOUTH_WALL = VoxelShapes.cuboid(-1f, 0, 0, 2f, 1.75f, 0.125f);
+    private static final VoxelShape WEST_WALL =  VoxelShapes.cuboid(0.875f, 0, -1f, 1f, 1.75f, 2f);
     public Boolean check;
-    public NbtCompound cpd = new NbtCompound();
 
 
     public DexMapBlock(Settings settings) {
@@ -67,11 +66,9 @@ public class DexMapBlock extends BlockWithEntity implements BlockEntityProvider,
             case NORTH -> {
                 return NORTH_WALL;
             }
-
             case EAST -> {
                 return EAST_WALL;
             }
-
             case SOUTH -> {
                 return SOUTH_WALL;
             }
@@ -81,6 +78,7 @@ public class DexMapBlock extends BlockWithEntity implements BlockEntityProvider,
             default -> {
                 return null;
             }
+
         }
 
     }
@@ -94,138 +92,18 @@ public class DexMapBlock extends BlockWithEntity implements BlockEntityProvider,
     @Override
     public ActionResult onUse(BlockState state, World world, BlockPos pos, PlayerEntity player, Hand hand, BlockHitResult hit) {
         DexMapBlockEntity map = (DexMapBlockEntity) world.getBlockEntity(pos);
-        NbtCompound nbtCompound;
         ItemStack stack = player.getStackInHand(hand);
         if (map instanceof DexMapBlockEntity) {
-            if (stack.isOf(ModItems.DEXREWARD25)) {
-                check = map.tokenMutable.get(1);
-                if (!check) {
-                    map.tokenMutable.set(1, true);
-                    map.setStack(0, stack);
-                    stack.damage(1, player, player1 -> player1.sendToolBreakStatus(hand));
-                    world.playSound(player, pos, SoundEvents.BLOCK_NOTE_BLOCK_HARP.value(), SoundCategory.BLOCKS, 1f, 1f);
-                    markDirty();
-                    return ActionResult.SUCCESS;
-                }
-            } else if (stack.isOf(ModItems.DEXREWARD50)) {
-                check = map.tokenMutable.get(2);
-                if (!check) {
-                    map.tokenMutable.set(2, true);
-                    map.setStack(1, stack);
-                    stack.damage(1, player, player1 -> player1.sendToolBreakStatus(hand));
-                    world.playSound(player, pos, SoundEvents.BLOCK_AMETHYST_BLOCK_CHIME, SoundCategory.BLOCKS);
-                    markDirty();
-                    return ActionResult.SUCCESS;
-                }
-            } else if (stack.isOf(ModItems.DEXREWARD75)) {
-                check = map.tokenMutable.get(3);
-                if (!check) {
-                    map.tokenMutable.set(3, true);
-                    map.setStack(2, stack);
-                    stack.damage(1, player, player1 -> player1.sendToolBreakStatus(hand));
-                    world.playSound(player, pos, SoundEvents.BLOCK_NOTE_BLOCK_BASEDRUM.value(), SoundCategory.BLOCKS);
-                    markDirty();
-                    return ActionResult.SUCCESS;
-                }
-            } else if (stack.isOf(ModItems.DEXREWARD100)) {
-                check = map.tokenMutable.get(4);
-                if (!check) {
-                    map.tokenMutable.set(4, true);
-                    map.setStack(3, stack);
-                    stack.damage(1, player, player1 -> player1.sendToolBreakStatus(hand));
-                    world.playSound(player, pos, SoundEvents.BLOCK_NOTE_BLOCK_BANJO.value(), SoundCategory.BLOCKS);
-                    map.markDirty();
-                    markDirty();
-                    return ActionResult.SUCCESS;
-                }
-            } else if (stack.isOf(ModItems.DEXREWARDKANTO)) {
-                check = map.tokenMutable.get(5);
-                if (!check) {
-                    map.tokenMutable.set(5, true);
-                    map.setStack(4, stack);
-                    stack.damage(1, player, player1 -> player1.sendToolBreakStatus(hand));
-                    world.playSound(player, pos, SoundEvents.BLOCK_NOTE_BLOCK_COW_BELL.value(), SoundCategory.BLOCKS);
-                    markDirty();
-                    return ActionResult.SUCCESS;
-                }
-            } else if (stack.isOf(ModItems.DEXREWARDJOHTO)) {
-                check = map.tokenMutable.get(6);
-                if (!check) {
-                    map.tokenMutable.set(6, true);
-                    map.setStack(5, stack);
-                    stack.damage(1, player, player1 -> player1.sendToolBreakStatus(hand));
-                    world.playSound(player, pos, SoundEvents.BLOCK_NOTE_BLOCK_DIDGERIDOO.value(), SoundCategory.BLOCKS);
-                    markDirty();
-                    return ActionResult.SUCCESS;
-                }
-            } else if (stack.isOf(ModItems.DEXREWARDHOENN)) {
-                check = map.tokenMutable.get(7);
-                if (!check) {
-                    map.tokenMutable.set(7, true);
-                    map.setStack(6, stack);
-                    stack.damage(1, player, player1 -> player1.sendToolBreakStatus(hand));
-                    world.playSound(player, pos, SoundEvents.BLOCK_NOTE_BLOCK_FLUTE.value(), SoundCategory.BLOCKS);
-                    markDirty();
-                    return ActionResult.SUCCESS;
-                }
-            } else if (stack.isOf(ModItems.DEXREWARDSINNOH)) {
-                check = map.tokenMutable.get(8);
-                if (!check) {
-                    map.tokenMutable.set(8, true);
-                    map.setStack(7, stack);
-                    stack.damage(1, player, player1 -> player1.sendToolBreakStatus(hand));
-                    world.playSound(player, pos, SoundEvents.BLOCK_NOTE_BLOCK_GUITAR.value(), SoundCategory.BLOCKS);
-                    markDirty();
-                    return ActionResult.SUCCESS;
-                }
-            } else if (stack.isOf(ModItems.DEXREWARDUNOVA)) {
-                check = map.tokenMutable.get(9);
-                if (!check) {
-                    map.tokenMutable.set(9, true);
-                    map.setStack(8, stack);
-                    stack.damage(1, player, player1 -> player1.sendToolBreakStatus(hand));
-                    world.playSound(player, pos, SoundEvents.BLOCK_NOTE_BLOCK_HAT.value(), SoundCategory.BLOCKS);
-                    markDirty();
-                    return ActionResult.SUCCESS;
-                }
-            } else if (stack.isOf(ModItems.DEXREWARDKALOS)) {
-                check = map.tokenMutable.get(10);
-                if (!check) {
-                    map.tokenMutable.set(1, true);
-                    map.setStack(9, stack);
-                    stack.damage(10, player, player1 -> player1.sendToolBreakStatus(hand));
-                    world.playSound(player, pos, SoundEvents.BLOCK_NOTE_BLOCK_PLING.value(), SoundCategory.BLOCKS);
-                    markDirty();
-                    return ActionResult.SUCCESS;
-                }
-            } else if (stack.isOf(ModItems.DEXREWARDALOLA)) {
-                check = map.tokenMutable.get(11);
-                if (!check) {
-                    map.tokenMutable.set(11, true);
-                    map.setStack(10, stack);
-                    stack.damage(1, player, player1 -> player1.sendToolBreakStatus(hand));
-                    world.playSound(player, pos, SoundEvents.BLOCK_NOTE_BLOCK_BIT.value(), SoundCategory.BLOCKS);
-                    markDirty();
-                    return ActionResult.SUCCESS;
-                }
-            } else if (stack.isOf(ModItems.DEXREWARDGALAR)) {
-                check = map.tokenMutable.get(12);
-                if (!check) {
-                    map.tokenMutable.set(12, true);
-                    map.setStack(11, stack);
-                    stack.damage(1, player, player1 -> player1.sendToolBreakStatus(hand));
-                    world.playSound(player, pos, SoundEvents.BLOCK_NOTE_BLOCK_SNARE.value(), SoundCategory.BLOCKS);
-                    return ActionResult.SUCCESS;
-                }
-            } else if (stack.isOf(ModItems.DEXREWARDPALDEA)) {
-                check = map.tokenMutable.get(13);
-                if (!check) {
-                    map.tokenMutable.set(13, true);
-                    map.setStack(12, stack);
-                    stack.damage(1, player, player1 -> player1.sendToolBreakStatus(hand));
-                    world.playSound(player, pos, SoundEvents.BLOCK_NOTE_BLOCK_IRON_XYLOPHONE.value(), SoundCategory.BLOCKS);
-                    markDirty();
-                    return ActionResult.SUCCESS;
+            for(int i = 0; i <= 12; i++){
+                if (stack.isOf(map.list[i])) {
+                    check = map.getStack(i).isEmpty();
+                    if (!check) {
+                        map.modifyInventory(i, stack);
+                        stack.damage(1, player, player1 -> player1.sendToolBreakStatus(hand));
+                        world.playSound(player, pos, SoundEvents.BLOCK_NOTE_BLOCK_HARP.value(), SoundCategory.BLOCKS, 1f, 1f);
+                        map.markDirty();
+                        return ActionResult.SUCCESS;
+                    }
                 }
             }
             map.markDirty();
@@ -251,19 +129,12 @@ public class DexMapBlock extends BlockWithEntity implements BlockEntityProvider,
 
     }
 
-    public List<ItemStack> getRenderStacks(){
-        return List.of(this.getStack(0), this.getStack(1), this.getStack(2),
-                this.getStack(3), this.getStack(4), this.getStack(5), this.getStack(6),
-                this.getStack(7), this.getStack(8), this.getStack(9), this.getStack(10),
-                this.getStack(11), this.getStack(12));
-    }
-
     @Override
     public void onStateReplaced(BlockState state, World world, BlockPos pos, BlockState newState, boolean moved) {
         if (state.getBlock() != newState.getBlock()) {
             BlockEntity blockEntity = world.getBlockEntity(pos);
             if (blockEntity instanceof DexMapBlockEntity) {
-                ItemScatterer.spawn(world, pos, (DexMapBlockEntity  )blockEntity);
+                ItemScatterer.spawn(world, pos, (DexMapBlockEntity)blockEntity);
                 world.updateComparators(pos,this);
             }
             super.onStateReplaced(state, world, pos, newState, moved);
@@ -275,15 +146,6 @@ public class DexMapBlock extends BlockWithEntity implements BlockEntityProvider,
         return new DexMapBlockEntity(pos, state);
     }
 
-    @Override
-    public DefaultedList<ItemStack> getItems() {
-        return null;
-    }
-
-    @Override
-    public ItemStack getStack(int slot) {
-        return ImplementedInventory.super.getStack(slot);
-    }
 }
 
 
